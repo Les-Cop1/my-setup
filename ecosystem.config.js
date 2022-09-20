@@ -17,7 +17,9 @@ module.exports = {
       repo: 'git@github.com:Les-Cop1/my-setup.git',
       path: process.env.HOST_PATH,
       'post-deploy': 'yarn setup && yarn build',
-      env: {},
+      env: {
+        NODE_ENV: process.env.NODE_ENV,
+      },
     },
   },
 }

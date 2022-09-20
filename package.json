@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "repository": "git@github.com:Les-Cop1/my-setup.git",
   "scripts": {
-    "build": "craco build",
+    "build": "craco build && yarn tailwind:build",
     "check-types": "tsc --noemit",
     "deploy": "pm2 deploy ecosystem.config.js production",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
@@ -14,6 +14,8 @@
     "prepare": "husky install",
     "start": "craco start",
     "setup": "yarn install",
+    "tailwind:build": "tailwindcss -i src/assets/styles/index.css -o dist/index.css",
+    "tailwind:start": "tailwindcss -i src/assets/styles/index.css -o dist/index.css --watch",
     "test": "craco test"
   },
   "contributors": [
@@ -43,8 +45,8 @@
     ]
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@craco/craco": "^6.4.5",
-    "@firgal/components": "^0.0.4",
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^2.0.10",
     "@testing-library/jest-dom": "^5.16.5",
@@ -54,6 +56,7 @@
     "@types/node": "^18.7.14",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
+    "antd": "^4.23.2",
     "i18next": "^21.9.1",
     "i18next-browser-languagedetector": "^6.1.5",
     "react": "^18.2.0",
@@ -68,7 +71,7 @@
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "autoprefixer": "^10.4.8",
     "commitlint": "^17.1.2",
-    "commitlint-config-gitmoji": "^2.2.5",
+    "commitlint-plugin-gitmoji": "^2.2.0",
     "craco-alias": "^3.0.1",
     "dotenv": "^16.0.2",
     "husky": "^8.0.1",
