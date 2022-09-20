@@ -72,3 +72,5 @@ jobs:
           HOST_PORT: ${{ secrets.HOST_PORT }}
           HOST_USER: ${{ secrets.HOST_USER }}
           HOST_PATH: ${{ secrets.HOST_PATH }}
+
+          NODE_ENV: ${{ secrets.NODE_ENV }}
