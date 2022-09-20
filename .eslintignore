@@ -1,0 +1,5 @@
+node_modules/
+.husky/
+build/
+craco.config.js
+ecosystem.config.js

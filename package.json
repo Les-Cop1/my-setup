@@ -1,0 +1,81 @@
+{
+  "name": "my-setup",
+  "version": "0.0.0",
+  "description": "Website to manage your setup",
+  "private": true,
+  "license": "UNLICENSED",
+  "repository": "git@github.com:Les-Cop1/my-setup.git",
+  "scripts": {
+    "build": "craco build",
+    "check-types": "tsc --noemit",
+    "deploy": "pm2 deploy ecosystem.config.js production",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint . && yarn check-types",
+    "prepare": "husky install",
+    "start": "craco start",
+    "setup": "yarn install",
+    "test": "craco test"
+  },
+  "contributors": [
+    {
+      "name": "Félix LEGRELLE",
+      "email": "legrelle.f@gmail.com"
+    },
+    {
+      "name": "Lucas STOEBNER",
+      "email": "stoebnerl@gmail.com"
+    },
+    {
+      "name": "Arbaz BHATTI",
+      "email": "bhatti.stgainbriel@gmail.com"
+    }
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@craco/craco": "^6.4.5",
+    "@firgal/components": "^0.0.4",
+    "@headlessui/react": "^1.6.6",
+    "@heroicons/react": "^2.0.10",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.0.0",
+    "@types/node": "^18.7.14",
+    "@types/react": "^18.0.18",
+    "@types/react-dom": "^18.0.6",
+    "i18next": "^21.9.1",
+    "i18next-browser-languagedetector": "^6.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^11.18.5",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.8.2",
+    "web-vitals": "^3.0.1"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "autoprefixer": "^10.4.8",
+    "commitlint": "^17.1.2",
+    "commitlint-config-gitmoji": "^2.2.5",
+    "craco-alias": "^3.0.1",
+    "dotenv": "^16.0.2",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "pm2": "^5.2.0",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8",
+    "tsconfig-paths-webpack-plugin": "^4.0.0"
+  }
+}
