@@ -47,7 +47,6 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@craco/craco": "^6.4.5",
-    "@firgal/components": "^0.0.4",
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^2.0.10",
     "@testing-library/jest-dom": "^5.16.5",
