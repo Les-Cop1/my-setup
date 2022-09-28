@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { isLoggedIn, login as loginApi, createUser as registerApi } from '@api'
 import { useQuery } from '@hooks'
@@ -24,9 +24,9 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
   const query = useQuery()
   const [authState, setAuthState] = useState<AuthenticationStateType>(initState)
 
-  const redirect = useCallback(() => {
+  const redirect = () => {
     navigate(query.get('redirect_uri') || '/')
-  }, [navigate, query])
+  }
 
   const login = (username: string, password: string) => {
     loginApi(username, password).then((response) => {
@@ -63,7 +63,7 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
         navigate(`/login?redirect_uri=${encodeURI(location.pathname)}`)
       }
     })
-  }, [location.pathname, navigate, redirect])
+  }, [])
 
   return (
     <AuthenticationContext.Provider value={{ ...authState, login, logout, register }}>
