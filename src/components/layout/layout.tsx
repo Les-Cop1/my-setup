@@ -3,20 +3,22 @@ import React from 'react'
 import { Footer, Navbar } from '@components'
 import { useAuth } from '@helpers'
 
+import { useTranslation } from 'react-i18next'
 import { Link, Outlet } from 'react-router-dom'
 
 export const Layout: React.FC = () => {
+  const { t } = useTranslation()
   const { user } = useAuth()
 
   const navigation = [
     {
-      label: 'Home',
+      label: t('navbar.home'),
       href: '/',
     },
   ]
   const navigationDisconnect = [
     {
-      label: 'Login or Register',
+      label: t('navbar.loginOrRegister'),
       href: '/register',
       className: 'text-emerald-600 hover:text-emerald-500',
     },
@@ -27,7 +29,7 @@ export const Layout: React.FC = () => {
       href: '/setup',
     },
     {
-      label: user?.username || user?.user.username ? user?.username || user?.user.username : 'My Account', //TODO: Temporary
+      label: user?.username || user?.user.username ? user?.username || user?.user.username : t('navbar.account'), //TODO: Temporary
       href: '/user',
       className: 'text-emerald-600 hover:text-emerald-500',
     },

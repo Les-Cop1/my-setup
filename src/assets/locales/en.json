@@ -1,4 +1,26 @@
 {
 	"translation": {
+		"navbar": {
+			"home": "Home",
+			"loginOrRegister": "Login / Register",
+			"logout": "Logout",
+			"account": "My Account"
+		},
+		"authentication_page" : {
+			"register": {
+				"title": "Create an account",
+				"cta": "Sign up",
+				"external": "or sign in"
+			},
+			"login": {
+				"title": "Sign in to your account",
+				"cta": "Sign in",
+				"external": "or register"
+			},
+			"username" : "",
+			"password": "",
+			"confirmPassword": ""
+		},
+		"not_found_text": "This page doesn't exist"
 	}
 }

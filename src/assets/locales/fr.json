@@ -1,4 +1,26 @@
 {
 	"translation" : {
+		"navbar": {
+			"home": "Menu",
+			"loginOrRegister": "Connexion / Inscription",
+			"logout": "Déconnexion",
+			"account": "Mon compte"
+		},
+		"authentication_page" : {
+			"register": {
+				"title": "Créer un compte",
+				"cta": "Inscription",
+				"external": "ou connexion"
+			},
+			"login": {
+				"title": "Connectez-vous à votre compte",
+				"cta": "Connexion",
+				"external": "ou inscription"
+			},
+			"username" : "Pseudonyme",
+			"password": "Mot de passe",
+			"confirmPassword": "Confirmer le mot de passe"
+		},
+		"not_found_text": "Cette page n'existe pas"
 	}
 }

@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 
 import { useAuth } from '@helpers'
 
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 export const Login = () => {
   document.title = 'Login - mySETUP'
+
+  const { t } = useTranslation()
   const { login } = useAuth()
 
   const [username, setUsername] = useState('')
@@ -24,7 +27,9 @@ export const Login = () => {
           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
           alt="Your Company"
         />
-        <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+        <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+          {t('authentication_page.login.title')}
+        </h2>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -32,7 +37,7 @@ export const Login = () => {
           <form className="space-y-6" onSubmit={onSubmit}>
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                Username
+                {t('authentication_page.username')}
               </label>
               <div className="mt-1">
                 <input
@@ -49,7 +54,7 @@ export const Login = () => {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
+                {t('authentication_page.password')}
               </label>
               <div className="mt-1">
                 <input
@@ -69,7 +74,7 @@ export const Login = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                Sign in
+                {t('authentication_page.login.cta')}
               </button>
             </div>
           </form>
@@ -82,7 +87,7 @@ export const Login = () => {
               <div className="relative flex justify-center text-sm">
                 <span className="bg-white px-2 text-gray-500">
                   <Link to={'/register'} className="font-medium text-indigo-600 hover:text-indigo-500">
-                    Or register
+                    {t('authentication_page.login.external')}
                   </Link>
                 </span>
               </div>
