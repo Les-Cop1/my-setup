@@ -1,10 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+
 import '@assets/styles/index.css'
+
 import App from './app'
-import reportWebVitals from './reportWebVitals'
-import { BrowserRouter } from 'react-router-dom'
 import './i18n'
+import reportWebVitals from './reportWebVitals'
+import 'antd/dist/antd.css'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
