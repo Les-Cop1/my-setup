@@ -27,7 +27,7 @@ export const Layout: React.FC = () => {
       href: '/setup',
     },
     {
-      label: user?.username ? user?.username : 'My Account',
+      label: user?.username || user?.user.username ? user?.username || user?.user.username : 'My Account', //TODO: Temporary
       href: '/user',
       className: 'text-emerald-600 hover:text-emerald-500',
     },
