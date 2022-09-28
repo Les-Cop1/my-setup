@@ -1,46 +1,47 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
-import { Layout as AntLayout, Menu } from 'antd'
-import { LoginOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons'
+
+import { Footer, Navbar } from '@components'
 import { useAuth } from '@helpers'
-const { Header } = AntLayout
-const { SubMenu } = Menu
+
+import { Link, Outlet } from 'react-router-dom'
 
 export const Layout: React.FC = () => {
-  const { user, signout } = useAuth()
+  const { user } = useAuth()
+
+  const navigation = [
+    {
+      label: 'Home',
+      href: '/',
+    },
+  ]
+  const navigationDisconnect = [
+    {
+      label: 'Login or Register',
+      href: '/register',
+      className: 'text-emerald-600 hover:text-emerald-500',
+    },
+  ]
+  const navigationConnected = [
+    {
+      label: 'My Setup',
+      href: '/setup',
+    },
+    {
+      label: user?.username ? user?.username : 'My Account',
+      href: '/user',
+      className: 'text-emerald-600 hover:text-emerald-500',
+    },
+  ]
 
   return (
-    <AntLayout style={{ minHeight: '100vh' }}>
-      <Header className="header">
-        <div className="logo" />
-        <Menu theme="dark" mode="horizontal">
-          <Menu.Item key="home">
-            <Link to="/">Home</Link>
-          </Menu.Item>
-          {user ? (
-            <>
-              <Menu.Item key="setup">
-                <Link to="/setup">My Setup</Link>
-              </Menu.Item>
-              <SubMenu key="account-menu" icon={<UserOutlined />} title={user.username}>
-                <Menu.Item key="account" icon={<UserOutlined />}>
-                  <Link to="account">Account</Link>
-                </Menu.Item>
-                <Menu.Item key="logout" onClick={signout} icon={<LogoutOutlined />}>
-                  Logout
-                </Menu.Item>
-              </SubMenu>
-            </>
-          ) : (
-            <Menu.Item key="register" icon={<LoginOutlined />}>
-              <Link to="/register">Login or Register</Link>
-            </Menu.Item>
-          )}
-        </Menu>
-      </Header>
-      <AntLayout>
-        <Outlet />
-      </AntLayout>
-    </AntLayout>
+    <div className="relative bg-zinc-50 min-h-screen">
+      <Navbar
+        navigation={user ? [...navigation, ...navigationConnected] : [...navigation, ...navigationDisconnect]}
+        linkComponent={Link}
+        backgroundColor="dark"
+      />
+      <Outlet />
+      <Footer content={`© ${new Date().getFullYear()} - My Setup`} />
+    </div>
   )
 }
