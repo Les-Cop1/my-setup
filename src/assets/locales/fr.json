@@ -21,7 +21,7 @@
 				"cta": "Connexion",
 				"external": "ou inscription"
 			},
-			"username" : "Pseudonyme",
+			"username" : "Nom d'utilisateur",
 			"password": "Mot de passe",
 			"confirmation": "Confirmer le mot de passe"
 		},

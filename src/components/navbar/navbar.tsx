@@ -20,14 +20,13 @@ export const Navbar: React.FC<NavbarProps> = () => {
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
                 <div className="flex-shrink-0">
-                  <Link to="/">
+                  <Link to="/" className="text-3xl">
                     <span className="sr-only">My Setup</span>
                     🏠
                   </Link>
                 </div>
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
-                    <NavbarItem to="/" label={t('navbar.home')} />
                     {user ? (
                       <NavbarItem to="/setup" label="My Setup" />
                     ) : (
@@ -105,7 +104,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
           <Disclosure.Panel className="lg:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
-              <NavbarItem to="/" label={t('navbar.home')} isMobile />
               {user ? (
                 <NavbarItem to="/setup" label="My Setup" isMobile />
               ) : (
