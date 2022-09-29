@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { isLoggedIn, login as loginApi, createUser as registerApi } from '@api'
+import { isLoggedIn, login as loginApi, logout as logoutApi, createUser as registerApi } from '@api'
 import { useQuery } from '@hooks'
 import { AuthenticationContextType, AuthenticationProviderProps, AuthenticationStateType } from '@types'
 
@@ -39,8 +39,8 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
     })
   }
 
-  const register = (username: string, password: string, confirmPassword: string) => {
-    registerApi(username, password, confirmPassword).then((response) => {
+  const register = (username: string, password: string, confirmation: string) => {
+    registerApi(username, password, confirmation).then((response) => {
       if (response.success) {
         setAuthState({ authenticated: true, user: response.data })
         redirect()
@@ -50,7 +50,16 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
     })
   }
 
-  const logout = () => {}
+  const logout = () => {
+    logoutApi().then((response) => {
+      if (response.success) {
+        setAuthState(initState)
+        navigate(`/login`)
+      } else {
+        console.error(response.error)
+      }
+    })
+  }
 
   useEffect(() => {
     isLoggedIn().then((response) => {
@@ -64,6 +73,11 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
       }
     })
   }, [])
+  useEffect(() => {
+    if (location.pathname === '/logout') {
+      logout()
+    }
+  }, [location])
 
   return (
     <AuthenticationContext.Provider value={{ ...authState, login, logout, register }}>

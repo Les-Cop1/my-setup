@@ -6,17 +6,17 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 export const Register = () => {
-  document.title = 'Register - mySETUP'
-
   const { t } = useTranslation()
+  document.title = t('pageTitle.register')
+
   const { register } = useAuth()
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [confirmation, setConfirmation] = useState('')
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    register(username, password, confirmPassword)
+    register(username, password, confirmation)
   }
   return (
     <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -69,16 +69,16 @@ export const Register = () => {
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-                {t('authentication_page.confirmPassword')}
+              <label htmlFor="confirmation" className="block text-sm font-medium text-gray-700">
+                {t('authentication_page.confirmation')}
               </label>
               <div className="mt-1">
                 <input
-                  id="confirmPassword"
-                  name="confirmPassword"
+                  id="confirmation"
+                  name="confirmation"
                   type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  value={confirmation}
+                  onChange={(e) => setConfirmation(e.target.value)}
                   required
                   className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 />

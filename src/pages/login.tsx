@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 export const Login = () => {
-  document.title = 'Login - mySETUP'
-
   const { t } = useTranslation()
+  document.title = t('pageTitle.login')
+
   const { login } = useAuth()
 
   const [username, setUsername] = useState('')

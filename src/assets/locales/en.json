@@ -1,5 +1,9 @@
 {
 	"translation": {
+		"pageTitle": {
+			"login": "Login - mySETUP",
+			"register": "Register - mySETUP"
+		},
 		"navbar": {
 			"home": "Home",
 			"loginOrRegister": "Login / Register",
@@ -19,8 +23,8 @@
 			},
 			"username" : "",
 			"password": "",
-			"confirmPassword": ""
+			"confirmation": ""
 		},
-		"not_found_text": "This page doesn't exist"
+		"this_page_doesnt_exist": "This page doesn't exist"
 	}
 }

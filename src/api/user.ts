@@ -10,10 +10,10 @@ type AuthResponseType = {
 export const createUser = async (
   username: string,
   password: string,
-  confirmPassword: string,
+  confirmation: string,
 ): Promise<ResponseType<AuthResponseType>> => {
   try {
-    const response = await axios.post('/user', { username, password, confirmation: confirmPassword })
+    const response = await axios.post('/user', { username, password, confirmation })
     return response.data
   } catch (error: any) {
     return error.response.data

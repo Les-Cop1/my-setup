@@ -1,5 +1,9 @@
 {
 	"translation" : {
+		"pageTitle": {
+			"login": "Connexion - mySETUP",
+			"register": "Inscription - mySETUP"
+		},
 		"navbar": {
 			"home": "Menu",
 			"loginOrRegister": "Connexion / Inscription",
@@ -19,8 +23,8 @@
 			},
 			"username" : "Pseudonyme",
 			"password": "Mot de passe",
-			"confirmPassword": "Confirmer le mot de passe"
+			"confirmation": "Confirmer le mot de passe"
 		},
-		"not_found_text": "Cette page n'existe pas"
+		"this_page_doesnt_exist": "Cette page n'existe pas"
 	}
 }

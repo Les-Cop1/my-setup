@@ -7,7 +7,7 @@ export type AuthenticationStateType = {
 
 export type AuthenticationContextType = AuthenticationStateType & {
   login: (email: string, password: string) => void
-  register: (email: string, password: string, confirmPassword: string) => void
+  register: (email: string, password: string, confirmation: string) => void
   logout: () => void
 }
 
