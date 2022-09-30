@@ -10,7 +10,7 @@ export const NotFound: React.FC = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center px-10 gap-6">
       <img className="max-h-96" src={illustration} alt="page not found illustration" />
-      <h1>{t('this_page_doesnt_exist')}</h1>
+      <h1>{t("This page doesn't exist")}</h1>
     </div>
   )
 }

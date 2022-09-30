@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 export const Register = () => {
   const { t } = useTranslation()
-  document.title = t('pageTitle.register')
+  document.title = t('pageTitle.Register')
 
   const { register } = useAuth()
 
@@ -26,7 +26,7 @@ export const Register = () => {
           🏠
         </div>
         <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-          {t('authentication_page.register.title')}
+          {t('authentication_page.register.Create an account')}
         </h2>
       </div>
 
@@ -35,7 +35,7 @@ export const Register = () => {
           <form className="space-y-6" onSubmit={onSubmit}>
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                {t('authentication_page.username')}
+                {t('authentication_page.Username')}
               </label>
               <div className="mt-1">
                 <input
@@ -52,7 +52,7 @@ export const Register = () => {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                {t('authentication_page.password')}
+                {t('authentication_page.Password')}
               </label>
               <div className="mt-1">
                 <input
@@ -69,7 +69,7 @@ export const Register = () => {
 
             <div>
               <label htmlFor="confirmation" className="block text-sm font-medium text-gray-700">
-                {t('authentication_page.confirmation')}
+                {t('authentication_page.Confirmation')}
               </label>
               <div className="mt-1">
                 <input
@@ -89,7 +89,7 @@ export const Register = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                {t('authentication_page.register.cta')}
+                {t('authentication_page.register.Sign up')}
               </button>
             </div>
           </form>
@@ -102,7 +102,7 @@ export const Register = () => {
               <div className="relative flex justify-center text-sm">
                 <span className="bg-white px-2 text-gray-500">
                   <Link to={'/login'} className="font-medium text-indigo-600 hover:text-indigo-500">
-                    {t('authentication_page.register.external')}
+                    {t('authentication_page.register.or sign in')}
                   </Link>
                 </span>
               </div>

@@ -1,30 +1,29 @@
 {
 	"translation" : {
 		"pageTitle": {
-			"login": "Connexion - mySETUP",
-			"register": "Inscription - mySETUP"
+			"Login": "Connexion - mySETUP",
+			"Register": "Inscription - mySETUP"
 		},
 		"navbar": {
-			"home": "Menu",
-			"loginOrRegister": "Connexion / Inscription",
-			"logout": "Déconnexion",
-			"account": "Mon compte"
+			"Login / Register": "Connexion / Inscription",
+			"Logout": "Déconnexion",
+			"My account": "Mon compte"
 		},
 		"authentication_page" : {
 			"register": {
-				"title": "Créer un compte",
-				"cta": "Inscription",
-				"external": "ou connexion"
+				"Create an account": "Créer un compte",
+				"Sign up": "Inscription",
+				"or sign in": "ou connexion"
 			},
 			"login": {
-				"title": "Connectez-vous à votre compte",
-				"cta": "Connexion",
-				"external": "ou inscription"
+				"Sign in to your account": "Connectez-vous à votre compte",
+				"Sign in": "Connexion",
+				"or register": "ou inscription"
 			},
-			"username" : "Nom d'utilisateur",
-			"password": "Mot de passe",
-			"confirmation": "Confirmer le mot de passe"
+			"Username" : "Nom d'utilisateur",
+			"Password": "Mot de passe",
+			"Confirmation": "Confirmer le mot de passe"
 		},
-		"this_page_doesnt_exist": "Cette page n'existe pas"
+		"This page doesn't exist": "Cette page n'existe pas"
 	}
 }
