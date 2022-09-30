@@ -1,29 +1,16 @@
 {
 	"translation" : {
-		"pageTitle": {
-			"Login": "Connexion - mySETUP",
-			"Register": "Inscription - mySETUP"
-		},
-		"navbar": {
-			"Login / Register": "Connexion / Inscription",
-			"Logout": "Déconnexion",
-			"My account": "Mon compte"
-		},
-		"authentication_page" : {
-			"register": {
-				"Create an account": "Créer un compte",
-				"Sign up": "Inscription",
-				"or sign in": "ou connexion"
-			},
-			"login": {
-				"Sign in to your account": "Connectez-vous à votre compte",
-				"Sign in": "Connexion",
-				"or register": "ou inscription"
-			},
-			"Username" : "Nom d'utilisateur",
-			"Password": "Mot de passe",
-			"Confirmation": "Confirmer le mot de passe"
-		},
-		"This page doesn't exist": "Cette page n'existe pas"
+		"Confirmation": "Confirmer le mot de passe",
+		"Create an account": "Créer un compte",
+		"Logout": "Déconnexion",
+		"My account": "Mon compte",
+		"or sign in": "ou connexion",
+		"or sign up": "ou inscription",
+		"Password": "Mot de passe",
+		"Sign in to your account": "Connectez-vous à votre compte",
+		"Sign in": "Connexion",
+		"Sign up": "Inscription",
+		"This page doesn't exist": "Cette page n'existe pas",
+		"Username" : "Identifiant"
 	}
 }

@@ -30,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                     {user ? (
                       <NavbarItem to="/setup" label="My Setup" />
                     ) : (
-                      <NavbarItem to="/login" label={t('navbar.loginOrRegister')} />
+                      <NavbarItem to="/login" label={`${t('Sign in')} / ${t('Sign up')}`} />
                     )}
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                                   'block px-4 py-2 text-sm text-gray-700',
                                 )}
                               >
-                                {t('navbar.My account')}
+                                {t('My account')}
                               </Link>
                             )}
                           </Menu.Item>
@@ -89,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                                   'block px-4 py-2 text-sm text-gray-700',
                                 )}
                               >
-                                {t('navbar.Logout')}
+                                {t('Logout')}
                               </Link>
                             )}
                           </Menu.Item>
@@ -107,14 +107,14 @@ export const Navbar: React.FC<NavbarProps> = () => {
               {user ? (
                 <NavbarItem to="/setup" label="My Setup" isMobile />
               ) : (
-                <NavbarItem to="/login" label={t('navbar.Login / Register')} isMobile />
+                <NavbarItem to="/login" label={`${t('Sign in')} / ${t('Sign up')}`} isMobile />
               )}
             </div>
             {user && (
               <div className="border-t border-gray-700 pt-4 pb-3">
                 <div className="mt-3 space-y-1 px-2">
-                  <NavbarItem to="/user" label={t('navbar.My account')} isMobile />
-                  <NavbarItem to="/logout" label={t('navbar.Logout')} isMobile />
+                  <NavbarItem to="/user" label={t('My account')} isMobile />
+                  <NavbarItem to="/logout" label={t('Logout')} isMobile />
                 </div>
               </div>
             )}

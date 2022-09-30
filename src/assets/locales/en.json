@@ -1,29 +1,16 @@
 {
-	"translation": {
-		"pageTitle": {
-			"Login": "Login - mySETUP",
-			"Register": "Register - mySETUP"
-		},
-		"navbar": {
-			"Login / Register": "Login / Register",
-			"Logout": "Logout",
-			"My account": "My Account"
-		},
-		"authentication_page" : {
-			"register": {
-				"Create an account": "Create an account",
-				"Sign up": "Sign up",
-				"or sign in": "or sign in"
-			},
-			"login": {
-				"Sign in to your account": "Sign in to your account",
-				"Sign in": "Sign in",
-				"or register": "or register"
-			},
-			"Username" : "Username",
-			"Password": "Password",
-			"Confirmation": "Confirmation"
-		},
-		"This page doesn't exist": "This page doesn't exist"
+	"translation" : {
+		"Confirmation": "Confirmation",
+		"Create an account": "Create an account",
+		"Logout": "Logout",
+		"My account": "My account",
+		"or sign in": "or sign in",
+		"or sign up": "or sign up",
+		"Password": "Password",
+		"Sign in to your account": "Sign in to your account",
+		"Sign in": "Sign in",
+		"Sign up": "Sign up",
+		"This page doesn't exist": "This page doesn't exist",
+		"Username" : "Username"
 	}
 }

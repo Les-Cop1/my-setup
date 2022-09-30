@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 export const Login = () => {
   const { t } = useTranslation()
-  document.title = t('pageTitle.Login')
+  document.title = `${t('Sign in')} - MySETUP`
 
   const { login } = useAuth()
 
@@ -27,7 +27,7 @@ export const Login = () => {
           🏠
         </div>
         <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-          {t('authentication_page.login.Sign in to your account')}
+          {t('Sign in to your account')}
         </h2>
       </div>
 
@@ -36,7 +36,7 @@ export const Login = () => {
           <form className="space-y-6" onSubmit={onSubmit}>
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                {t('authentication_page.Username')}
+                {t('Username')}
               </label>
               <div className="mt-1">
                 <input
@@ -53,7 +53,7 @@ export const Login = () => {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                {t('authentication_page.Password')}
+                {t('Password')}
               </label>
               <div className="mt-1">
                 <input
@@ -73,7 +73,7 @@ export const Login = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                {t('authentication_page.login.Sign in')}
+                {t('Sign in')}
               </button>
             </div>
           </form>
@@ -86,7 +86,7 @@ export const Login = () => {
               <div className="relative flex justify-center text-sm">
                 <span className="bg-white px-2 text-gray-500">
                   <Link to={'/register'} className="font-medium text-indigo-600 hover:text-indigo-500">
-                    {t('authentication_page.login.or register')}
+                    {t('or sign up')}
                   </Link>
                 </span>
               </div>
