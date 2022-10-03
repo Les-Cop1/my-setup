@@ -8,7 +8,7 @@ export const NotFound: React.FC = () => {
   const { t } = useTranslation()
 
   return (
-    <div className="w-full flex flex-col items-center justify-center px-10 gap-6">
+    <div className="w-full flex flex-col items-center justify-center p-10 gap-6">
       <img className="max-h-96" src={illustration} alt="page not found illustration" />
       <h1>{t("This page doesn't exist")}</h1>
     </div>
