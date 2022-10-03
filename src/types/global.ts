@@ -12,3 +12,5 @@ export type AuthContextType = {
   user: IUser | null
   signout: () => void
 }
+
+export type OnClickType = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void

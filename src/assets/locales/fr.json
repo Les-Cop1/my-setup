@@ -1,5 +1,6 @@
 {
 	"translation" : {
+		"Actual password": "Mot de passe actuel",
 		"Confirmation": "Confirmer le mot de passe",
 		"Create an account": "Créer un compte",
 		"Logout": "Déconnexion",
@@ -10,6 +11,7 @@
 		"Sign in to your account": "Connectez-vous à votre compte",
 		"Sign in": "Connexion",
 		"Sign up": "Inscription",
+		"Submit": "Envoyer",
 		"This page doesn't exist": "Cette page n'existe pas",
 		"Username" : "Identifiant"
 	}

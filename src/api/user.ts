@@ -20,10 +20,20 @@ export const createUser = async (
   }
 }
 
-//TODO
-export const updateUser = async (): Promise<ResponseType<AuthResponseType>> => {
+export const updateUser = async (
+  user: IUser,
+  username: string,
+  old_password: string,
+  password: string,
+  confirmation: string,
+): Promise<ResponseType<AuthResponseType>> => {
   try {
-    const response = await axios.put('/user')
+    const response = await axios.put(`/user/${user._id}`, {
+      username,
+      old_password,
+      password,
+      confirmation,
+    })
 
     return response.data
   } catch (error: any) {

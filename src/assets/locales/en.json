@@ -1,5 +1,6 @@
 {
 	"translation" : {
+		"Actual password": "Actual password",
 		"Confirmation": "Confirmation",
 		"Create an account": "Create an account",
 		"Logout": "Logout",
@@ -10,6 +11,7 @@
 		"Sign in to your account": "Sign in to your account",
 		"Sign in": "Sign in",
 		"Sign up": "Sign up",
+		"Submit": "Submit",
 		"This page doesn't exist": "This page doesn't exist",
 		"Username" : "Username"
 	}
