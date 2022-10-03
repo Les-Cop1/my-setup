@@ -1,4 +1,16 @@
 {
 	"translation" : {
+		"Confirmation": "Confirmer le mot de passe",
+		"Create an account": "Créer un compte",
+		"Logout": "Déconnexion",
+		"My account": "Mon compte",
+		"or sign in": "ou connexion",
+		"or sign up": "ou inscription",
+		"Password": "Mot de passe",
+		"Sign in to your account": "Connectez-vous à votre compte",
+		"Sign in": "Connexion",
+		"Sign up": "Inscription",
+		"This page doesn't exist": "Cette page n'existe pas",
+		"Username" : "Identifiant"
 	}
 }

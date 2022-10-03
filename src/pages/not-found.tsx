@@ -1,19 +1,16 @@
 import React from 'react'
-import { ReactComponent as NotFoundImage } from '@assets/images/not_found.svg'
 
-export const NotFound = () => {
-  document.title = 'Not Found - mySETUP'
+import illustration from '@assets/images/not_found.svg'
+
+import { useTranslation } from 'react-i18next'
+
+export const NotFound: React.FC = () => {
+  const { t } = useTranslation()
 
   return (
-    <div
-      style={{
-        margin: 'auto',
-        display: 'flex',
-        alignContent: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <NotFoundImage />
+    <div className="w-full flex flex-col items-center justify-center px-10 gap-6">
+      <img className="max-h-96" src={illustration} alt="page not found illustration" />
+      <h1>{t("This page doesn't exist")}</h1>
     </div>
   )
 }

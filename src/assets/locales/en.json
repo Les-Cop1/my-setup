@@ -1,4 +1,16 @@
 {
-	"translation": {
+	"translation" : {
+		"Confirmation": "Confirmation",
+		"Create an account": "Create an account",
+		"Logout": "Logout",
+		"My account": "My account",
+		"or sign in": "or sign in",
+		"or sign up": "or sign up",
+		"Password": "Password",
+		"Sign in to your account": "Sign in to your account",
+		"Sign in": "Sign in",
+		"Sign up": "Sign up",
+		"This page doesn't exist": "This page doesn't exist",
+		"Username" : "Username"
 	}
 }
