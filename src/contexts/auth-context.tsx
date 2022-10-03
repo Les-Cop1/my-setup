@@ -68,11 +68,12 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
         if (location.pathname === '/login') {
           redirect()
         }
-      } else if (location.pathname !== '/login') {
+      } else if (!location.pathname.match(/^(\/|\/login|\/register)$/)) {
         navigate(`/login?redirect_uri=${encodeURI(location.pathname)}`)
       }
     })
   }, [])
+
   useEffect(() => {
     if (location.pathname === '/logout') {
       logout()
