@@ -1,1 +1,6 @@
 export * from './layout'
+export * from './navbar'
+export * from './footer'
+export * from './authenticated'
+export * from './button'
+export * from './input'

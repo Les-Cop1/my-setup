@@ -1,4 +1,19 @@
 {
 	"translation" : {
+		"Actual password": "Mot de passe actuel",
+		"Confirmation": "Confirmer le mot de passe",
+		"Create an account": "Créer un compte",
+		"Logout": "Déconnexion",
+		"My account": "Mon compte",
+		"My setup presentation": "Gérez facilement votre setup avec mySETUP. Vous pouvez diviser vos setup en pièces pour gérer vos dépenses et stocker vos factures en un seul endroit.",
+		"or sign in": "ou connexion",
+		"or sign up": "ou inscription",
+		"Password": "Mot de passe",
+		"Sign in to your account": "Connectez-vous à votre compte",
+		"Sign in": "Connexion",
+		"Sign up": "Inscription",
+		"Submit": "Envoyer",
+		"This page doesn't exist": "Cette page n'existe pas",
+		"Username" : "Identifiant"
 	}
 }
