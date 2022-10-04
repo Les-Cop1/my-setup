@@ -22,7 +22,8 @@
   },
   "extends": "./tsconfig.paths.json",
   "include": [
-    "src"
+    "src",
+    "src/config/snapshotResolver.js"
   ],
   "exclude": [
     "node_modules"

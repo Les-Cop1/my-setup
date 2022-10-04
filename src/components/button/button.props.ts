@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IconType, OnClickType } from '@types'
+import { ComponentType, IconType, OnClickType } from '@types'
 
 export enum ButtonVariant {
   PRIMARY = 'primary',
@@ -17,7 +17,7 @@ export enum ButtonSize {
   LARGE = 'large',
 }
 
-export type ButtonProps = {
+export interface ButtonProps extends ComponentType {
   type?: 'button' | 'submit' | 'reset'
   label?: string
   icon?: IconType
@@ -27,5 +27,4 @@ export type ButtonProps = {
   isLoading?: boolean
   onClick?: OnClickType
   children?: React.ReactNode
-  className?: string
 }

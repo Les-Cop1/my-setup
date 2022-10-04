@@ -3,6 +3,12 @@ import React from 'react'
 import { IUser } from '@types'
 
 export type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>
+
+export type ComponentType = {
+  testid?: string
+  className?: string
+}
+
 export type ResponseType<Type = null> = {
   success: boolean
   data?: Type
