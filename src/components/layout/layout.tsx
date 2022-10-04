@@ -6,10 +6,14 @@ import { Outlet } from 'react-router-dom'
 
 export const Layout: React.FC = () => {
   return (
-    <div className="relative bg-zinc-50 min-h-screen">
-      <Navbar />
+    <div className="flex flex-col bg-zinc-50 min-h-screen">
+      <div className="block">
+        <Navbar />
+      </div>
       <Outlet />
-      <Footer content={`© ${new Date().getFullYear()} - My Setup`} />
+      <div className="mt-auto">
+        <Footer content={`© ${new Date().getFullYear()} - My Setup`} />
+      </div>
     </div>
   )
 }
