@@ -32,10 +32,6 @@ export const Account = () => {
   return (
     <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">{t('My account')}</h2>
-      </div>
-
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={onSubmit}>
             <Input
@@ -43,7 +39,7 @@ export const Account = () => {
               name="username"
               type="text"
               label={t('Username')}
-              onChange={(value) => setUsername(value)}
+              onChange={(value: string) => setUsername(value)}
               value={username}
               isRequired
             />
@@ -52,7 +48,7 @@ export const Account = () => {
               name="actualPassword"
               type="password"
               label={t('Actual password')}
-              onChange={(value) => setActualPassword(value)}
+              onChange={(value: string) => setActualPassword(value)}
               value={actualPassword}
               isRequired
             />
@@ -61,7 +57,7 @@ export const Account = () => {
               name="password"
               type="password"
               label={t('Password')}
-              onChange={(value) => setPassword(value)}
+              onChange={(value: string) => setPassword(value)}
               value={password}
               isRequired
             />
@@ -70,7 +66,7 @@ export const Account = () => {
               name="confirmation"
               type="password"
               label={t('Confirmation')}
-              onChange={(value) => setConfirmation(value)}
+              onChange={(value: string) => setConfirmation(value)}
               value={confirmation}
               isRequired
             />
