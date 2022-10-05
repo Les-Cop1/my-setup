@@ -30,8 +30,21 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('package.json', 'yarn.lock') }}
       - name: Run ESLint
         run: yarn lint
-  build:
+  test:
     needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package.json', 'yarn.lock') }}
+      - name: Run Jest
+        run: yarn jest
+  build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
