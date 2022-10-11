@@ -1,10 +1,8 @@
 import React from 'react'
 
 import { Button, ButtonSize, ButtonVariant } from '@components'
-
-import { screen } from '@testing-library/dom'
 import '@testing-library/jest-dom'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 describe('button', () => {
   test('Button should be defined', () => {
