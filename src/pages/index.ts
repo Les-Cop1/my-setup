@@ -1,5 +1,7 @@
 export * from './not-found'
 export * from './login'
 export * from './register'
+export * from './add-room'
 export * from './account'
 export * from './home'
+export * from './overview'
