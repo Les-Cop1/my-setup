@@ -2,13 +2,20 @@
 	"translation" : {
 		"Actual password": "Mot de passe actuel",
 		"Confirmation": "Confirmer le mot de passe",
+		"Confirmation is required": "La confirmation est requise",
 		"Create an account": "Créer un compte",
+		"Data already exists": "Les données existent déjà",
 		"Logout": "Déconnexion",
 		"My account": "Mon compte",
 		"My setup presentation": "Gérez facilement votre setup avec mySETUP. Vous pouvez diviser vos setup en pièces pour gérer vos dépenses et stocker vos factures en un seul endroit.",
 		"or sign in": "ou connexion",
 		"or sign up": "ou inscription",
 		"Password": "Mot de passe",
+		"Password must be at least 8 characters long": "Le mot de passe doit contenir au moins 8 caractères",
+		"Password must contain at least one lowercase letter": "Le mot de passe doit contenir au moins une lettre minuscule",
+		"Password must contain at least one number": "Le mot de passe doit contenir au moins un chiffre",
+		"Password must contain at least one special character": "Le mot de passe doit contenir au moins un caractère spécial",
+		"Password must contain at least one uppercase letter": "Le mot de passe doit contenir au moins une majuscule",
 		"Sign in to your account": "Connectez-vous à votre compte",
 		"Sign in": "Connexion",
 		"Sign up": "Inscription",
@@ -16,6 +23,7 @@
 		"Submit": "Envoyer",
 		"This page doesn't exist": "Cette page n'existe pas",
 		"Username" : "Identifiant",
-		"Username or password incorrect": "Identifiant ou mot de passe incorrect"
+		"Username or password incorrect": "Identifiant ou mot de passe incorrect",
+		"Username must be at least 3 characters long": "L'identifiant doit contenir au moins 3 caractères"
 	}
 }

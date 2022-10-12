@@ -39,15 +39,15 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
     return response
   }
 
-  const register = (username: string, password: string, confirmation: string) => {
-    registerApi(username, password, confirmation).then((response) => {
-      if (response.success) {
-        setAuthState({ authenticated: true, user: response.data })
-        redirect()
-      } else {
-        console.error(response.error)
-      }
-    })
+  const register = async (username: string, password: string, confirmation: string) => {
+    const response = await registerApi(username, password, confirmation)
+
+    if (response.success) {
+      setAuthState({ authenticated: true, user: response.data })
+      redirect()
+    }
+
+    return response
   }
 
   const logout = () => {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AuthResponseType } from '@api'
+import { AuthResponseType, UserResponseType } from '@api'
 
 import { ResponseType } from './global'
 
@@ -11,7 +11,7 @@ export type AuthenticationStateType = {
 
 export type AuthenticationContextType = AuthenticationStateType & {
   login: (email: string, password: string) => Promise<ResponseType<AuthResponseType>> | void
-  register: (email: string, password: string, confirmation: string) => void
+  register: (email: string, password: string, confirmation: string) => Promise<ResponseType<UserResponseType>> | void
   logout: () => void
 }
 
