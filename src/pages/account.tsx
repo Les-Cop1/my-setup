@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { updateUser } from '@api'
 import { Button, ButtonVariant, Input } from '@components'
-import { useAuth } from '@helpers'
+import { useAuth } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { useAuth } from '@helpers'
+import { useAuth } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
