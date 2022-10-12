@@ -28,3 +28,8 @@ export const getRoomStats = async (): Promise<ResponseType<StatsResponseType>> =
   const response = await axios.get(`/room/stats`)
   return response.data
 }
+
+export const createRoom = async (room: { name: string }): Promise<ResponseType> => {
+  const response = await axios.post('/room', room)
+  return response.data
+}
