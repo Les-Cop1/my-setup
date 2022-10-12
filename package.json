@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "repository": "git@github.com:Les-Cop1/my-setup.git",
   "scripts": {
-    "build": "craco build && yarn tailwind:build",
+    "build": "craco build",
     "check-types": "tsc --noemit",
     "deploy": "pm2 deploy ecosystem.config.js production",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
@@ -14,8 +14,7 @@
     "prepare": "husky install",
     "start": "craco start",
     "setup": "yarn install",
-    "tailwind:build": "tailwindcss -i src/assets/styles/index.css -o dist/index.css",
-    "tailwind:start": "tailwindcss -i src/assets/styles/index.css -o dist/index.css --watch",
+
     "test": "jest",
     "test:cov": "jest --coverage",
     "test:update": "jest --updateSnapshot"
