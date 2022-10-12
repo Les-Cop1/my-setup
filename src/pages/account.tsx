@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 export const Account = () => {
   const { t } = useTranslation()
-  document.title = `${t('My account')} - MySETUP`
+  document.title = `${t('My account')} - mySetup`
 
   const { user } = useAuth()
 
@@ -71,7 +71,7 @@ export const Account = () => {
               isRequired
             />
 
-            <Button type="submit" variant={ButtonVariant.INFO}>
+            <Button type="submit" className="text-right" variant={ButtonVariant.INFO}>
               {t('Submit')}
             </Button>
           </form>

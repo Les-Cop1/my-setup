@@ -6,22 +6,22 @@ import { FooterItem } from './components'
 import { FooterProps } from './footer.props'
 
 export const Footer: React.FC<FooterProps> = ({ backgroundColor = 'light', navigation, content, ...props }) => {
-  const textClass = 'text-gray-400'
+  const textClass = 'text-slate-400'
   let bgClass,
     textLinkClass = ''
   switch (backgroundColor) {
     case 'dark':
       bgClass = 'bg-zinc-900'
-      textLinkClass = 'text-gray-300 hover:text-white'
+      textLinkClass = 'text-slate-300 hover:text-white'
       break
     case 'white':
       bgClass = 'bg-white'
-      textLinkClass = 'text-gray-500 hover:text-gray-900'
+      textLinkClass = 'text-slate-500 hover:text-slate-900'
       break
     case 'light':
     default:
       bgClass = 'bg-zinc-50'
-      textLinkClass = 'text-gray-500 hover:text-gray-900'
+      textLinkClass = 'text-slate-500 hover:text-slate-900'
   }
 
   return (

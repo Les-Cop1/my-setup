@@ -19,7 +19,7 @@ describe('button', () => {
     render(<Button testid="warning" variant={ButtonVariant.WARNING} />)
     render(<Button testid="danger" variant={ButtonVariant.DANGER} />)
     expect(screen.getByTestId('default')).toHaveClass(
-      'bg-white text-gray-700 border-gray-300 hover:bg-gray-50 focus:ring-zinc-50',
+      'bg-white text-slate-700 border-slate-300 hover:bg-slate-50 focus:ring-zinc-50',
     )
     expect(screen.getByTestId('primary')).toHaveClass(
       'bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500',

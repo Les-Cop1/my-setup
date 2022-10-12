@@ -38,7 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
       variantClasses = 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 border-transparent'
       break
     default:
-      variantClasses = 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50 focus:ring-zinc-50'
+      variantClasses = 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50 focus:ring-zinc-50'
   }
 
   switch (size) {

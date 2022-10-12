@@ -62,14 +62,14 @@ export const Input: React.FC<InputProps> = ({
     inputClassName = 'border-red-500 focus:border-red-500 focus:ring-red-500'
     iconClassName = 'text-red-500'
   } else {
-    inputClassName = 'border-gray-300 focus:border-emerald-500 focus:ring-emerald-500'
-    iconClassName = 'text-gray-400'
+    inputClassName = 'border-slate-300 focus:border-teal-500 focus:ring-teal-500'
+    iconClassName = 'text-slate-400'
   }
 
   return (
     <div>
       {label && (
-        <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+        <label htmlFor={id} className="block text-sm font-medium text-slate-700">
           {label}
         </label>
       )}
@@ -77,7 +77,7 @@ export const Input: React.FC<InputProps> = ({
         {AddonBefore !== undefined &&
           (typeof AddonBefore === 'string' ? (
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <span className="text-gray-500 sm:text-sm">{AddonBefore}</span>
+              <span className="text-slate-500 sm:text-sm">{AddonBefore}</span>
             </div>
           ) : (
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -94,7 +94,7 @@ export const Input: React.FC<InputProps> = ({
           required={isRequired}
           onChange={_onChange}
           className={classNames(
-            'block w-full rounded-md shadow-sm placeholder-gray-400 sm:text-sm',
+            'block w-full rounded-md shadow-sm placeholder-slate-400 sm:text-sm',
             className,
             inputClassName,
             addonClassName,
@@ -104,7 +104,7 @@ export const Input: React.FC<InputProps> = ({
         {AddonAfter !== undefined &&
           (typeof AddonAfter === 'string' ? (
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <span className="text-gray-500 sm:text-sm">{AddonAfter}</span>
+              <span className="text-slate-500 sm:text-sm">{AddonAfter}</span>
             </div>
           ) : (
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -113,7 +113,7 @@ export const Input: React.FC<InputProps> = ({
           ))}
       </div>
       {helpText && (
-        <p className="mt-2 text-sm text-gray-500" id={`${id}-description`}>
+        <p className="mt-2 text-sm text-slate-500" id={`${id}-description`}>
           {helpText}
         </p>
       )}

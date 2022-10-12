@@ -14,7 +14,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
   const { user } = useAuth()
 
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-slate-800">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
@@ -22,14 +22,14 @@ export const Navbar: React.FC<NavbarProps> = () => {
               <div className="flex items-center px-2 lg:px-0">
                 <div className="flex-shrink-0">
                   <Link to="/" className="text-3xl">
-                    <span className="sr-only">My Setup</span>
+                    <span className="sr-only">mySetup</span>
                     🏠
                   </Link>
                 </div>
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
                     {user ? (
-                      <NavbarItem to="/setup" label="My Setup" />
+                      <NavbarItem to="/setup" label="mySetup" />
                     ) : (
                       <NavbarItem to="/login" label={`${t('Sign in')} / ${t('Sign up')}`} />
                     )}
@@ -38,7 +38,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
               </div>
               <div className="flex lg:hidden">
                 {/* Mobile menu button */}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                     {/* Profile dropdown */}
                     <Menu as="div" className="relative ml-4 flex-shrink-0">
                       <div>
-                        <Menu.Button className="flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <Menu.Button className="flex rounded-full bg-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-800">
                           <span className="sr-only">Open user menu</span>
                           <UserIcon className="block h-6 w-6" aria-hidden="true" />
                         </Menu.Button>
@@ -73,8 +73,8 @@ export const Navbar: React.FC<NavbarProps> = () => {
                               <Link
                                 to="/user"
                                 className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700',
+                                  active ? 'bg-slate-100' : '',
+                                  'block px-4 py-2 text-sm text-slate-700',
                                 )}
                               >
                                 {t('My account')}
@@ -86,8 +86,8 @@ export const Navbar: React.FC<NavbarProps> = () => {
                               <Link
                                 to="/logout"
                                 className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700',
+                                  active ? 'bg-slate-100' : '',
+                                  'block px-4 py-2 text-sm text-slate-700',
                                 )}
                               >
                                 {t('Logout')}
@@ -106,13 +106,13 @@ export const Navbar: React.FC<NavbarProps> = () => {
           <Disclosure.Panel className="lg:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {user ? (
-                <NavbarItem to="/setup" label="My Setup" isMobile />
+                <NavbarItem to="/setup" label="mySetup" isMobile />
               ) : (
                 <NavbarItem to="/login" label={`${t('Sign in')} / ${t('Sign up')}`} isMobile />
               )}
             </div>
             {user && (
-              <div className="border-t border-gray-700 pt-4 pb-3">
+              <div className="border-t border-slate-700 pt-4 pb-3">
                 <div className="mt-3 space-y-1 px-2">
                   <NavbarItem to="/user" label={t('My account')} isMobile />
                   <NavbarItem to="/logout" label={t('Logout')} isMobile />

@@ -12,7 +12,7 @@ export const Layout: React.FC = () => {
       </div>
       <Outlet />
       <div className="mt-auto">
-        <Footer content={`© ${new Date().getFullYear()} - My Setup`} />
+        <Footer content={`© ${new Date().getFullYear()} - mySetup`} />
       </div>
     </div>
   )
