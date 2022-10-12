@@ -2,7 +2,7 @@ import { IUser, ResponseType } from '@types'
 
 import axios from 'axios'
 
-type AuthResponseType = {
+export type AuthResponseType = {
   user: IUser
   token: string
 }

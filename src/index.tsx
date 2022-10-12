@@ -6,7 +6,6 @@ import App from './app'
 import './i18n'
 import reportWebVitals from './reportWebVitals'
 import setupAxios from './setupAxios'
-import 'antd/dist/antd.css'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { Alert } from '@components'
 import { useAuth } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
@@ -13,10 +14,15 @@ export const Login = () => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState<string | null>()
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    login(username, password)
+    const response = await login(username, password)
+
+    if (response && !response.success) {
+      setError(response.error)
+    }
   }
 
   return (
@@ -76,8 +82,12 @@ export const Login = () => {
                 {t('Sign in')}
               </button>
             </div>
+            {error && (
+              <div>
+                <Alert message={t(error)} />
+              </div>
+            )}
           </form>
-
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">

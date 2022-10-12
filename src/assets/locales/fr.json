@@ -12,8 +12,10 @@
 		"Sign in to your account": "Connectez-vous à votre compte",
 		"Sign in": "Connexion",
 		"Sign up": "Inscription",
+		"Some data is missing": "Veuillez remplir tous les champs",
 		"Submit": "Envoyer",
 		"This page doesn't exist": "Cette page n'existe pas",
-		"Username" : "Identifiant"
+		"Username" : "Identifiant",
+		"Username or password incorrect": "Identifiant ou mot de passe incorrect"
 	}
 }

@@ -12,8 +12,10 @@
 		"Sign in to your account": "Sign in to your account",
 		"Sign in": "Sign in",
 		"Sign up": "Sign up",
+		"Some data is missing": "You must fill all the fields",
 		"Submit": "Submit",
 		"This page doesn't exist": "This page doesn't exist",
-		"Username" : "Username"
+		"Username" : "Username",
+		"Username or password incorrect": "Username or password incorrect"
 	}
 }
