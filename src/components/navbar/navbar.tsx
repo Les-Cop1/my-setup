@@ -2,8 +2,9 @@ import React, { Fragment } from 'react'
 
 import { NavbarItem, NavbarProps } from '@components'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { classNames, useAuth } from '@helpers'
+import { classNames } from '@helpers'
 import { Bars3Icon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useAuth } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'

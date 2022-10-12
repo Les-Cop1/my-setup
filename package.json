@@ -17,6 +17,7 @@
     "tailwind:build": "tailwindcss -i src/assets/styles/index.css -o dist/index.css",
     "tailwind:start": "tailwindcss -i src/assets/styles/index.css -o dist/index.css --watch",
     "test": "jest",
+    "test:cov": "jest --coverage",
     "test:update": "jest --updateSnapshot"
   },
   "contributors": [

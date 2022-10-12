@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from 'jest'
+
+const config: Config = {
   preset: 'ts-jest',
   transform: {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
@@ -22,4 +24,14 @@ module.exports = {
   testEnvironment: 'jsdom',
   snapshotResolver: '<rootDir>/src/config/snapshotResolver.js',
   modulePathIgnorePatterns: ['node_modules', 'dist', '.jest-test-results.json'],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['json-summary', 'text'],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/src/config/',
+    '<rootDir>/src/hooks/',
+    '<rootDir>/src/contexts/',
+    '<rootDir>/src/api/',
+  ],
 }
+
+export default config
