@@ -70,10 +70,11 @@ export const Account = () => {
               value={confirmation}
               isRequired
             />
-
-            <Button type="submit" className="text-right" variant={ButtonVariant.INFO}>
-              {t('Submit')}
-            </Button>
+            <div className="text-right">
+              <Button type="submit" className="text-right" variant={ButtonVariant.INFO}>
+                {t('Submit')}
+              </Button>
+            </div>
           </form>
         </div>
       </div>

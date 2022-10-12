@@ -16,7 +16,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const defaultClasses = `group relative flex whitespace-nowrap justify-center items-center px-4 py-2 border font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm disabled:bg-zinc-300 disabled:text-zinc-500 disabled:cursor-not-allowed`
+  const defaultClasses = `group relative whitespace-nowrap justify-center items-center px-4 py-2 border font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm disabled:bg-zinc-300 disabled:text-zinc-500 disabled:cursor-not-allowed`
 
   let variantClasses: string
 
