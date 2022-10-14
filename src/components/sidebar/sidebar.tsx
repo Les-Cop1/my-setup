@@ -199,8 +199,8 @@ export const Sidebar: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="py-6 bg-white">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+          <div className="bg-zinc-50 ">
+            <div className="mx-auto max-w-7xl">
               <AddRoom
                 getRooms={getRooms}
                 isOpen={isSlideOverOpen}

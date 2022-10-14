@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { getRoomStats } from '@api'
-import { PageHeader } from '@components'
+import { Card, PageHeader } from '@components'
 
 import { ArcElement, BarElement, CategoryScale, Chart as ChartJS, LinearScale, Title, Tooltip } from 'chart.js'
 import { Bar, Doughnut } from 'react-chartjs-2'
@@ -113,39 +113,44 @@ export const Overview: React.FC = () => {
     <>
       <PageHeader title={t('Overview')} />
 
-      <dl className="mt-10 text-center sm:mx-auto sm:grid sm:max-w-3xl sm:grid-cols-2 lg:max-w-5xl lg:grid-cols-3 xl:gap-2 xl:grid-cols-5 sm:gap-8">
-        <div className="flex flex-col">
-          <dd className="order-1 mt-2 text-lg font-medium leading-6 text-teal-600">{t('Total')}</dd>
-          <dt className="order-2 text-4xl font-bold tracking-tight">
-            {t('Money', { val: typeof statsGlobal?.total_price === 'number' ? statsGlobal?.total_price : 0 })}
-          </dt>
-        </div>
-        <div className="mt-10 flex flex-col sm:mt-0">
-          <dd className="order-1 mt-2 text-lg font-medium leading-6 text-teal-600">{t('Average')}</dd>
-          <dt className="order-2 text-4xl font-bold tracking-tight">
-            {t('Money', { val: typeof statsGlobal?.average_price === 'number' ? statsGlobal?.average_price : 0 })}
-          </dt>
-        </div>
-        <div className="mt-10 flex flex-col sm:mt-0">
-          <dd className="order-1 mt-2 text-lg font-medium leading-6 text-teal-600">{t('Rooms')}</dd>
-          <dt className="order-2 text-4xl font-bold tracking-tight">{statsGlobal?.rooms_count}</dt>
-        </div>
-        <div className="mt-10 flex flex-col sm:mt-0">
-          <dd className="order-1 mt-2 text-lg font-medium leading-6 text-teal-600">{t('Items')}</dd>
-          <dt className="order-2 text-4xl font-bold tracking-tight">{statsGlobal?.items_count}</dt>
-        </div>
-        <div className="mt-10 flex flex-col sm:mt-0">
-          <dd className="order-1 mt-2 text-lg font-medium leading-6 text-teal-600">{t('Most expensive room')}</dd>
-          <dt className="order-2 text-4xl font-bold tracking-tight">{statsGlobal?.most_expensive_room?.name}</dt>
-        </div>
-      </dl>
-      <div className="bg-zinc-50 flex gap-2 p-3 items-center flex-col lg:flex-row">
-        <div className="w-1/3 h-auto bg-white">
-          <Doughnut options={optionsDoughnut} data={dataDoughnutChart} />
-        </div>
-        <div className="w-2/3 h-auto bg-white">
-          <Bar options={optionsBar} data={dataBarChart} />
-        </div>
+      <div className="mx-auto max-w-6xl p-4 sm:p-6 lg:p-8 grid grid-cols-2 gap-5 lg:grid-cols-4">
+        <Card>
+          <p className="truncate text-sm font-medium text-gray-500 mb-0">{t('Total')}</p>
+          <p className="text-lg font-medium text-gray-900 mb-0">
+            {t('Money', {
+              val: typeof statsGlobal?.total_price === 'number' ? statsGlobal?.total_price : 0,
+            })}
+          </p>
+        </Card>
+        <Card>
+          <p className="truncate text-sm font-medium text-gray-500 mb-0">{t('Average')}</p>
+          <p className="text-lg font-medium text-gray-900 mb-0">
+            {t('Money', {
+              val: typeof statsGlobal?.average_price === 'number' ? statsGlobal?.average_price : 0,
+            })}
+          </p>
+        </Card>
+        <Card>
+          <p className="truncate text-sm font-medium text-gray-500 mb-0">
+            {t('Room', { count: statsGlobal?.rooms_count })}
+          </p>
+          <p className="text-lg font-medium text-gray-900 mb-0">{statsGlobal?.rooms_count}</p>
+        </Card>
+        <Card>
+          <p className="truncate text-sm font-medium text-gray-500 mb-0">
+            {t('Item', { count: statsGlobal?.rooms_count })}
+          </p>
+          <p className="text-lg font-medium text-gray-900 mb-0">{statsGlobal?.items_count}</p>
+        </Card>
+      </div>
+
+      <div className="bg-zinc-50 flex gap-5 p-4 items-center flex-col lg:flex-row">
+        <Card className="w-full lg:w-1/3 sm:h-auto">
+          <Doughnut options={optionsDoughnut} data={dataDoughnutChart} className="max-h-60" />
+        </Card>
+        <Card className="w-full lg:w-2/3 lg:h-auto">
+          <Bar options={optionsBar} data={dataBarChart} className="max-h-60" />
+        </Card>
       </div>
     </>
   )
