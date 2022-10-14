@@ -23,13 +23,13 @@ export const Button: React.FC<ButtonProps> = ({
   switch (variant) {
     case ButtonVariant.PRIMARY:
     case ButtonVariant.SUCCESS:
-      variantClasses = 'bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500 border-transparent'
+      variantClasses = 'bg-teal-600 text-white hover:bg-teal-700 focus:ring-teal-500 border-transparent'
       break
     case ButtonVariant.SECONDARY:
-      variantClasses = 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200 focus:ring-emerald-50 border-transparent'
+      variantClasses = 'bg-teal-100 text-teal-700 hover:bg-teal-200 focus:ring-teal-50 border-transparent'
       break
     case ButtonVariant.INFO:
-      variantClasses = 'bg-teal-500 text-white hover:bg-teal-600 focus:ring-teal-400 border-transparent'
+      variantClasses = 'bg-cyan-500 text-white hover:bg-cyan-600 focus:ring-cyan-400 border-transparent'
       break
     case ButtonVariant.WARNING:
       variantClasses = 'bg-amber-400 text-white hover:bg-amber-500 focus:ring-bg-amber-300 border-transparent'

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import { NavbarItem, NavbarProps } from '@components'
+import { NavbarItem } from '@components'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { classNames } from '@helpers'
 import { Bars3Icon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -9,7 +9,7 @@ import { useAuth } from '@hooks'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-export const Navbar: React.FC<NavbarProps> = () => {
+export const Navbar: React.FC = () => {
   const { t } = useTranslation()
   const { user } = useAuth()
 

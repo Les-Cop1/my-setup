@@ -21,14 +21,10 @@ describe('button', () => {
     expect(screen.getByTestId('default')).toHaveClass(
       'bg-white text-slate-700 border-slate-300 hover:bg-slate-50 focus:ring-zinc-50',
     )
-    expect(screen.getByTestId('primary')).toHaveClass(
-      'bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500',
-    )
-    expect(screen.getByTestId('success')).toHaveClass(
-      'bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500',
-    )
-    expect(screen.getByTestId('secondary')).toHaveClass('bg-emerald-100 text-emerald-700 hover:bg-emerald-200')
-    expect(screen.getByTestId('info')).toHaveClass('bg-teal-500 text-white hover:bg-teal-600')
+    expect(screen.getByTestId('primary')).toHaveClass('bg-teal-600 text-white hover:bg-teal-700 focus:ring-teal-500')
+    expect(screen.getByTestId('success')).toHaveClass('bg-teal-600 text-white hover:bg-teal-700 focus:ring-teal-500')
+    expect(screen.getByTestId('secondary')).toHaveClass('bg-teal-100 text-teal-700 hover:bg-teal-200')
+    expect(screen.getByTestId('info')).toHaveClass('bg-cyan-500 text-white hover:bg-cyan-600')
     expect(screen.getByTestId('warning')).toHaveClass('bg-amber-400 text-white hover:bg-amber-500')
     expect(screen.getByTestId('danger')).toHaveClass('bg-red-600 text-white hover:bg-red-700')
   })
