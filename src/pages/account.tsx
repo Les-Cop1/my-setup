@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { updateUser } from '@api'
-import { Button, ButtonVariant, Input } from '@components'
+import { Alert, Button, ButtonVariant, Input } from '@components'
 import { useAuth } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
@@ -16,6 +16,7 @@ export const Account = () => {
   const [actualPassword, setActualPassword] = useState('')
   const [password, setPassword] = useState('')
   const [confirmation, setConfirmation] = useState('')
+  const [error, setError] = useState<string | null>()
 
   useEffect(() => {
     if (user) setUsername(user.username)
@@ -23,10 +24,19 @@ export const Account = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    updateUser(user, username, actualPassword, password, confirmation).then((res) => {
-      //TODO: handle response
-      console.log(res)
-    })
+    updateUser(user, username, actualPassword, password, confirmation)
+      .then((response) => {
+        if (response.success) {
+          setActualPassword('')
+          setPassword('')
+          setConfirmation('')
+        } else {
+          setError(response.error)
+        }
+      })
+      .catch((error) => {
+        setError(error.message)
+      })
   }
 
   return (
@@ -50,7 +60,6 @@ export const Account = () => {
               label={t('Actual password')}
               onChange={(value: string) => setActualPassword(value)}
               value={actualPassword}
-              isRequired
             />
             <Input
               id="password"
@@ -59,7 +68,6 @@ export const Account = () => {
               label={t('Password')}
               onChange={(value: string) => setPassword(value)}
               value={password}
-              isRequired
             />
             <Input
               id="confirmation"
@@ -68,13 +76,17 @@ export const Account = () => {
               label={t('Confirmation')}
               onChange={(value: string) => setConfirmation(value)}
               value={confirmation}
-              isRequired
             />
             <div className="text-right">
               <Button type="submit" className="text-right" variant={ButtonVariant.INFO}>
                 {t('Submit')}
               </Button>
             </div>
+            {error && (
+              <div>
+                <Alert message={t(error)} />
+              </div>
+            )}
           </form>
         </div>
       </div>

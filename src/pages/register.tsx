@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { Alert } from '@components'
 import { useAuth } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
@@ -14,10 +15,17 @@ export const Register = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmation, setConfirmation] = useState('')
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [error, setError] = useState<string | null>()
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    register(username, password, confirmation)
+    const response = await register(username, password, confirmation)
+
+    if (response && !response.success) {
+      setError(response.error)
+    }
   }
+
   return (
     <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -90,6 +98,11 @@ export const Register = () => {
                 {t('Sign up')}
               </button>
             </div>
+            {error && (
+              <div>
+                <Alert message={t(error)} />
+              </div>
+            )}
           </form>
 
           <div className="mt-6">

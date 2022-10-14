@@ -2,18 +2,32 @@
 	"translation" : {
 		"Actual password": "Actual password",
 		"Confirmation": "Confirmation",
+		"Confirmation is required": "Confirmation is required",
 		"Create an account": "Create an account",
+		"Data already exists": "Data already exists",
 		"Logout": "Logout",
 		"My account": "My account",
 		"My setup presentation": "Manage easily your setup with mySETUP. You can manage divide your setup into rooms to manage your expenses and store your invoices in one place.",
+		"Old password is required": "Old password is required",
 		"or sign in": "or sign in",
 		"or sign up": "or sign up",
 		"Password": "Password",
+		"Password confirmation is required": "Password confirmation is required",
+		"Password must be at least 8 characters long": "Password must be at least 8 characters long",
+		"Password must contain at least one lowercase letter": "Password must contain at least one lowercase letter",
+		"Password must contain at least one number": "Password must contain at least one number",
+		"Password must contain at least one special character": "Password must contain at least one special character",
+		"Password must contain at least one uppercase letter": "Password must contain at least one uppercase letter",
 		"Sign in to your account": "Sign in to your account",
 		"Sign in": "Sign in",
 		"Sign up": "Sign up",
+		"Some data is missing": "You must fill all the fields",
 		"Submit": "Submit",
 		"This page doesn't exist": "This page doesn't exist",
-		"Username" : "Username"
+		"Unauthorized": "Unauthorized",
+		"User not found": "User not found",
+		"Username" : "Username",
+		"Username or password incorrect": "Username or password incorrect",
+		"Username must be at least 3 characters long": "Username must be at least 3 characters long"
 	}
 }

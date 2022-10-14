@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { InputProps } from '@components'
 import { classNames } from '@helpers'
@@ -65,6 +65,12 @@ export const Input: React.FC<InputProps> = ({
     inputClassName = 'border-slate-300 focus:border-teal-500 focus:ring-teal-500'
     iconClassName = 'text-slate-400'
   }
+
+  useEffect(() => {
+    if (value !== _value) {
+      setValue(value)
+    }
+  }, [value])
 
   return (
     <div>

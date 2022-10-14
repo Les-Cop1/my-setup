@@ -28,26 +28,26 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
     navigate(query.get('redirect_uri') || '/')
   }
 
-  const login = (username: string, password: string) => {
-    loginApi(username, password).then((response) => {
-      if (response.success) {
-        setAuthState({ authenticated: true, user: response.data })
-        redirect()
-      } else {
-        console.error(response.error)
-      }
-    })
+  const login = async (username: string, password: string) => {
+    const response = await loginApi(username, password)
+
+    if (response.success) {
+      setAuthState({ authenticated: true, user: response.data })
+      redirect()
+    }
+
+    return response
   }
 
-  const register = (username: string, password: string, confirmation: string) => {
-    registerApi(username, password, confirmation).then((response) => {
-      if (response.success) {
-        setAuthState({ authenticated: true, user: response.data })
-        redirect()
-      } else {
-        console.error(response.error)
-      }
-    })
+  const register = async (username: string, password: string, confirmation: string) => {
+    const response = await registerApi(username, password, confirmation)
+
+    if (response.success) {
+      setAuthState({ authenticated: true, user: response.data })
+      redirect()
+    }
+
+    return response
   }
 
   const logout = () => {
