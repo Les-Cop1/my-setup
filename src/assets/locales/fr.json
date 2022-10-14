@@ -19,6 +19,7 @@
 		"or sign up": "ou inscription",
 		"Overview": "Vue d'ensemble",
 		"Password": "Mot de passe",
+		"Password and confirmation are not the same": "Le mot de passe et la confirmation ne sont pas identiques",
 		"Password confirmation is required": "La confirmation du mot de passe est requise",
 		"Password must be at least 8 characters long": "Le mot de passe doit contenir au moins 8 caractères",
 		"Password must contain at least one lowercase letter": "Le mot de passe doit contenir au moins une lettre minuscule",

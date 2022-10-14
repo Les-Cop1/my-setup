@@ -21,6 +21,7 @@
 		"or sign up": "or sign up",
 		"Overview": "Overview",
 		"Password": "Password",
+		"Password and confirmation are not the same": "Password and confirmation are not the same",
 		"Password confirmation is required": "Password confirmation is required",
 		"Password must be at least 8 characters long": "Password must be at least 8 characters long",
 		"Password must contain at least one lowercase letter": "Password must contain at least one lowercase letter",
