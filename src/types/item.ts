@@ -4,11 +4,12 @@ export interface IItem {
   description?: string
   model?: string
   price?: number
+  link?: string
   purchaseDate?: string
   createDate?: number
-  user: string
-  room: string
+  user?: string
+  room?: string
+  categories?: Array<string>
   image?: string
   invoice?: string
-  categories?: Array<string>
 }

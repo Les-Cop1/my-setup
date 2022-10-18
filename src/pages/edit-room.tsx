@@ -68,7 +68,7 @@ export const EditRoom: React.FC<EditRoomProps> = ({ isOpen, onClose, getRooms, r
             name="name"
             value={name}
             onChange={(value) => {
-              setName(value)
+            setName(value as string)
             }}
           />
         </div>

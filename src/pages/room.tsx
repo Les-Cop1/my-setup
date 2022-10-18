@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
-import { getRoom } from '@api'
+import { getCategories, getRoom } from '@api'
 import illustration from '@assets/images/empty.svg'
 import { Card, CardAddon, PageHeader, Text } from '@components'
 import { stringToFloat } from '@helpers'
+import { Button, Card, CardAddon, PageHeader, SelectOptionProps, Text } from '@components'
 import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
-import { IRoom } from '@types'
+import { AddItem, EditItem, EditRoom } from '@pages'
+import { IItem, IRoom } from '@types'
 
-import { EditRoom } from './edit-room'
 import { useTranslation } from 'react-i18next'
 import { useOutletContext, useParams } from 'react-router-dom'
 import { ShapeProps, SvgBlob } from 'react-svg-blob'
@@ -29,9 +30,13 @@ export const Room: React.FC = () => {
   const { t } = useTranslation()
 
   const [room, setRoom] = useState<IRoom | undefined>()
+  const [category, setCategory] = useState<SelectOptionProps[]>([])
+  const [itemToEdit, setItemToEdit] = useState<IItem | undefined>()
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [stats, setStats] = useState<stats>({})
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
+  const [isSidebarOpenRoom, setIsSidebarOpenRoom] = useState<boolean>(false)
+  const [isSidebarOpenAddItem, setIsSidebarOpenAddItem] = useState<boolean>(false)
+  const [isSidebarOpenEditItem, setIsSidebarOpenEditItem] = useState<boolean>(false)
   const [itemsAspect, setItemsAspect] = useState<ShapeProps[]>([])
 
   const [getRooms] = useOutletContext<Array<() => void>>()
@@ -54,6 +59,30 @@ export const Room: React.FC = () => {
       })
       .finally(() => {
         setIsLoading(false)
+      })
+  }
+
+  const getCategory = () => {
+    setIsLoading(true)
+    getCategories()
+      .then((response) => {
+        const { success, data, error } = response
+        if (success) {
+          const categoryList = data?.categories.map((category) => ({
+            id: category,
+            text: category,
+            value: category,
+          }))
+          setCategory(categoryList ? categoryList : [])
+          setIsLoading(false)
+        } else {
+          console.log('error', 'Could not retrieve category data', error)
+          setCategory([])
+        }
+      })
+      .catch((error) => {
+        console.log('error', 'Could not retrieve category data', error)
+        setCategory([])
       })
   }
 
@@ -83,6 +112,7 @@ export const Room: React.FC = () => {
 
   useEffect(() => {
     getRoomData()
+    getCategory()
   }, [_id, getRooms])
 
   if (!isLoading && room === undefined) {
@@ -96,13 +126,22 @@ export const Room: React.FC = () => {
     )
   }
 
+  const handleEditItem = (item: IItem) => {
+    setItemToEdit(item)
+    setIsSidebarOpenEditItem(true)
+  }
+
+  const handleAddItem = () => {
+    setIsSidebarOpenAddItem(true)
+  }
+
   return (
     <div className="my-auto">
       <PageHeader
         title={room ? room?.name : ''}
         actions={[
-          { label: t('Add item'), icon: PlusIcon, isDisabled: isLoading },
-          { label: t('Edit room'), icon: PencilIcon, isDisabled: isLoading, onClick: () => setIsSidebarOpen(true) },
+          { label: t('Add item'), icon: PlusIcon, isDisabled: isLoading, onClick: handleAddItem },
+          { label: t('Edit room'), icon: PencilIcon, isDisabled: isLoading, onClick: () => setIsSidebarOpenRoom(true) },
         ]}
       />
 
@@ -144,6 +183,9 @@ export const Room: React.FC = () => {
                 <button
                   type="button"
                   className="relative inline-flex w-full items-center rounded-l-md bg-white px-2 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
+                  onClick={(_) => {
+                    handleEditItem(item as IItem)
+                  }}
                 >
                   <span className="sr-only">{t('Edit item')}</span>
                   <PencilIcon className="h-5 w-5" aria-hidden="true" />
@@ -177,11 +219,30 @@ export const Room: React.FC = () => {
       </div>
       <EditRoom
         getRooms={getRooms}
-        isOpen={isSidebarOpen}
+        isOpen={isSidebarOpenRoom}
         onClose={() => {
-          setIsSidebarOpen(false)
+          setIsSidebarOpenRoom(false)
         }}
         room={room}
+      />
+      <AddItem
+        getRooms={getRooms}
+        isOpen={isSidebarOpenAddItem}
+        onClose={() => {
+          setIsSidebarOpenAddItem(false)
+        }}
+        category={category}
+        room={room}
+      />
+
+      <EditItem
+        getRooms={getRooms}
+        isOpen={isSidebarOpenEditItem}
+        onClose={() => {
+          setIsSidebarOpenEditItem(false)
+        }}
+        category={category}
+        item={itemToEdit}
       />
     </div>
   )

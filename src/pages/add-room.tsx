@@ -36,15 +36,15 @@ export const AddRoom: React.FC<AddRoomProps> = ({ isOpen, onClose, getRooms }) =
   return (
     <SlideOver isOpen={isOpen} onClose={onClose} title={t('Add room')}>
       <div className="flex flex-col h-full justify-between">
-        <div className="pb-5">
-          <Input
-            label={t('Room name')}
-            name="name"
-            value={name}
-            onChange={(value) => {
-              setName(value)
-            }}
-          />
+      <div className="pb-5">
+        <Input
+          label={t('Room name')}
+          name="name"
+          value={name}
+          onChange={(value) => {
+            setName(value as string)
+          }}
+        />
         </div>
         <div className="flex justify-end">
           <Button onClick={handleClose}>{t('Close')}</Button>

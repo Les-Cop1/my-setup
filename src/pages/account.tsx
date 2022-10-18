@@ -49,7 +49,7 @@ export const Account = () => {
               name="username"
               type="text"
               label={t('Username')}
-              onChange={(value: string) => setUsername(value)}
+              onChange={(value) => setUsername(value as string)}
               value={username}
               isRequired
             />
@@ -58,7 +58,7 @@ export const Account = () => {
               name="actualPassword"
               type="password"
               label={t('Actual password')}
-              onChange={(value: string) => setActualPassword(value)}
+              onChange={(value) => setActualPassword(value as string)}
               value={actualPassword}
             />
             <Input
@@ -66,7 +66,7 @@ export const Account = () => {
               name="password"
               type="password"
               label={t('Password')}
-              onChange={(value: string) => setPassword(value)}
+              onChange={(value) => setPassword(value as string)}
               value={password}
             />
             <Input
@@ -74,7 +74,7 @@ export const Account = () => {
               name="confirmation"
               type="password"
               label={t('Confirmation')}
-              onChange={(value: string) => setConfirmation(value)}
+              onChange={(value) => setConfirmation(value as string)}
               value={confirmation}
             />
             <div className="text-right">

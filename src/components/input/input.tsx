@@ -22,7 +22,7 @@ export const Input: React.FC<InputProps> = ({
   addonAfter: AddonAfter,
   ...props
 }) => {
-  const [_value, setValue] = useState<string>(value)
+  const [_value, setValue] = useState<string | number>(value)
 
   const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: _value } = e.target
@@ -119,7 +119,10 @@ export const Input: React.FC<InputProps> = ({
           ))}
       </div>
       {helpText && (
-        <p className="mt-2 text-sm text-slate-500" id={`${id}-description`}>
+        <p
+          className={classNames('mt-2 text-sm text-slate-500', isError ? 'text-red-600' : '')}
+          id={`${id}-description`}
+        >
           {helpText}
         </p>
       )}

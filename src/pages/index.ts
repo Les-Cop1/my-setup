@@ -1,5 +1,7 @@
 export * from './account'
+export * from './add-item'
 export * from './add-room'
+export * from './edit-item'
 export * from './edit-room'
 export * from './home'
 export * from './login'
