@@ -1,2 +1,2 @@
 export * from './classNames'
-export * from './stringToHex'
+export * from './stringToFloat'

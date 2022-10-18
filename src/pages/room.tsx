@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { getRoom } from '@api'
 import { Button, Card, CardAddon, PageHeader, Text } from '@components'
-import { stringToHex } from '@helpers'
+import { stringToFloat } from '@helpers'
 import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { IRoom } from '@types'
 
@@ -19,8 +19,8 @@ type stats = {
 
 const generateShapeProps = (string: string): ShapeProps => ({
   size: 200,
-  growth: stringToHex(string),
-  edges: Math.floor(stringToHex(string)) + 3,
+  growth: stringToFloat(string),
+  edges: Math.floor(stringToFloat(string)) + 3,
 })
 
 export const Room: React.FC = () => {

@@ -1,4 +1,4 @@
-export const stringToHex = (str: string): number => {
+export const stringToFloat = (str: string): number => {
   let result = ''
   str
     .toUpperCase()
