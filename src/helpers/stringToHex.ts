@@ -1,4 +1,4 @@
-const stringToHex = (str: string): number => {
+export const stringToHex = (str: string): number => {
   let result = ''
   str
     .toUpperCase()
@@ -8,5 +8,3 @@ const stringToHex = (str: string): number => {
     })
   return parseFloat((parseInt(result) / Math.pow(10, result.length - 1)).toFixed(2))
 }
-
-export { stringToHex }
