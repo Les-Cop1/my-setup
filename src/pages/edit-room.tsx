@@ -38,7 +38,7 @@ export const EditRoom: React.FC<EditRoomProps> = ({ isOpen, onClose, getRooms, r
           getRooms()
           handleClose()
         } else {
-          console.log(error)
+          console.error(error)
         }
       },
     )
@@ -52,7 +52,7 @@ export const EditRoom: React.FC<EditRoomProps> = ({ isOpen, onClose, getRooms, r
         getRooms()
         navigate('/setup')
       } else {
-        console.log(error)
+        console.error(error)
       }
     })
   }

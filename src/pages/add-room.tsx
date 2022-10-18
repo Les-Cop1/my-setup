@@ -28,7 +28,7 @@ export const AddRoom: React.FC<AddRoomProps> = ({ isOpen, onClose, getRooms }) =
         getRooms()
         handleClose()
       } else {
-        console.log(error)
+        console.error(error)
       }
     })
   }

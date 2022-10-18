@@ -27,7 +27,7 @@ export const AuthLayout: React.FC = () => {
       if (success && data) {
         setRooms(data.rooms)
       } else {
-        console.log(error)
+        console.error(error)
       }
     })
   }
