@@ -31,6 +31,9 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, ArcElem
 
 export const Overview: React.FC = () => {
   const { t } = useTranslation()
+
+  document.title = t('Overview')
+
   const [statsGlobal, setStatsGlobal] = useState<StatsGlobal>()
   const [statsRooms, setStatsRooms] = useState<StatsRooms[]>([])
   const [statsYears, setStatsYears] = useState<StatsYears[]>([])
