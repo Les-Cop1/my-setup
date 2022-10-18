@@ -3523,6 +3523,11 @@ blessed@0.1.81:
   resolved "https://registry.yarnpkg.com/blessed/-/blessed-0.1.81.tgz#f962d687ec2c369570ae71af843256e6d0ca1129"
   integrity sha512-LoF5gae+hlmfORcG1M5+5XZi4LBmvlXTzwJWzUlPryN/SJdSflZvROM2TwkT0GMpq7oqT48NRd4GS7BiVBc5OQ==
 
+blobshape@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/blobshape/-/blobshape-1.0.0.tgz#8c96184439ac21b181ff4d8e0609681f181ecd12"
+  integrity sha512-GUD6tUIvj7k8zLSMtfdM1RyusWDjFqYL9g6J6QIgwxbVjL3b6mbRz5peerDc+6kbZX/14BSr3ed9sizrJKdkQQ==
+
 bluebird@^3.5.5:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
@@ -9409,6 +9414,13 @@ react-shallow-renderer@^16.15.0:
   dependencies:
     object-assign "^4.1.1"
     react-is "^16.12.0 || ^17.0.0 || ^18.0.0"
+
+react-svg-blob@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/react-svg-blob/-/react-svg-blob-0.3.1.tgz#d948d67f0f7ff1167db37c602178e535db291c6c"
+  integrity sha512-hJCdgcao8NDuOkGgKgSvbjMx15O7rndwSMGu2akWlrWzOqEL6M0cPwqCGO8brD2rnqMYwu1Zky6ZCLv+4g5/Eg==
+  dependencies:
+    blobshape "^1.0.0"
 
 react-test-renderer@^18.2.0:
   version "18.2.0"
