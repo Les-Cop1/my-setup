@@ -98,7 +98,7 @@ export const AuthLayout: React.FC = () => {
                   <div className="mt-5 h-0 flex-1 overflow-y-auto">
                     <nav className="space-y-1 px-2">
                       <SidebarItem label={t('Overview')} to="/setup" icon={Squares2X2Icon} isMobile />
-                      <SidebarItem label={t('Rooms')} to="#" icon={HomeIcon} isMobile />
+                      <SidebarItem label={t('Room', { count: rooms.length })} to="#" icon={HomeIcon} isMobile />
                       <div className="pl-5">
                         {rooms.map((item) => (
                           <SidebarItem label={item.name} to={`room/${item._id}`} key={item._id} isMobile />
@@ -127,7 +127,7 @@ export const AuthLayout: React.FC = () => {
             <div className="flex flex-1 flex-col overflow-y-auto">
               <nav className="flex-1 space-y-1 px-2 py-4">
                 <SidebarItem label={t('Overview')} to="/setup" icon={Squares2X2Icon} />
-                <SidebarItem label={t('Rooms')} to="#" icon={HomeIcon} />
+                <SidebarItem label={t('Room', { count: rooms.length })} to="#" icon={HomeIcon} />
                 <div className="pl-5">
                   {rooms.map((item) => (
                     <SidebarItem label={item.name} to={`room/${item._id}`} key={item._id} />
