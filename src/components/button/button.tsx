@@ -13,6 +13,7 @@ export const Button: React.FC<ButtonProps> = ({
   isLoading = false,
   onClick,
   className = '',
+  ariaLabel,
   children,
   ...props
 }) => {
@@ -60,6 +61,7 @@ export const Button: React.FC<ButtonProps> = ({
       className={classNames(className, defaultClasses, variantClasses)}
       onClick={onClick}
       disabled={isDisabled || isLoading}
+      aria-label={ariaLabel || label}
       {...props}
     >
       {Icon && (

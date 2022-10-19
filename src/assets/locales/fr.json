@@ -17,7 +17,7 @@
 		"Item_other": "Objets",
 		"My account": "Mon compte",
 		"My setup presentation": "Gérez facilement votre setup avec mySETUP. Vous pouvez diviser vos setup en pièces pour gérer vos dépenses et stocker vos factures en un seul endroit.",
-		"Money": "{{val, number}}€",
+		"Money": "{{val, number}} €",
 		"or sign in": "ou connexion",
 		"or sign up": "ou inscription",
 		"Overview": "Vue d'ensemble",

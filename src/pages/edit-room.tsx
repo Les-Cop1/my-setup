@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 
 import { deleteRoom, updateRoom } from '@api'
 import { Button, ButtonVariant, Input, SlideOver } from '@components'
+import { TrashIcon } from '@heroicons/react/24/solid'
 import { IRoom } from '@types'
 
 import { useTranslation } from 'react-i18next'
@@ -59,39 +60,40 @@ export const EditRoom: React.FC<EditRoomProps> = ({ isOpen, onClose, getRooms, r
 
   return (
     <SlideOver isOpen={isOpen} onClose={onClose} title={t('Edit room')}>
-      <div className="pb-5">
-        <Input
-          id={room?._id}
-          label={t('Room name')}
-          name="name"
-          value={name}
-          onChange={(value) => {
-            setName(value)
-          }}
-        />
-      </div>
-      <div className="flex justify-end">
-        <Button onClick={handleClose}>{t('Close')}</Button>
-        <Button
-          onClick={(_) => {
-            handleEditRoom()
-          }}
-          variant={ButtonVariant.SUCCESS}
-          className="ml-2"
-        >
-          {t('Edit room')}
-        </Button>
-      </div>
-      <div className="flex justify-end mt-5">
-        <Button
-          onClick={(_) => {
-            deleteRoomHandler()
-          }}
-          variant={ButtonVariant.DANGER}
-          className="ml-2"
-        >
-          {t('Delete room')}
-        </Button>
+      <div className="flex flex-col h-full justify-between">
+        <div className="pb-5">
+          <Input
+            id={room?._id}
+            label={t('Room name')}
+            name="name"
+            value={name}
+            onChange={(value) => {
+              setName(value)
+            }}
+          />
+        </div>
+        <div className="flex">
+          <Button
+            onClick={(_) => {
+              deleteRoomHandler()
+            }}
+            variant={ButtonVariant.DANGER}
+            ariaLabel={t('Delete room')}
+            icon={TrashIcon}
+            className="mr-auto"
+          />
+          <Button onClick={handleClose} className="mx-2">
+            {t('Close')}
+          </Button>
+          <Button
+            onClick={(_) => {
+              handleEditRoom()
+            }}
+            variant={ButtonVariant.SUCCESS}
+          >
+            {t('Edit room')}
+          </Button>
+        </div>
       </div>
     </SlideOver>
   )

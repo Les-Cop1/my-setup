@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { getRoom } from '@api'
 import illustration from '@assets/images/empty.svg'
-import { Button, Card, CardAddon, PageHeader, Text } from '@components'
+import { Card, CardAddon, PageHeader, Text } from '@components'
 import { stringToFloat } from '@helpers'
 import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { IRoom } from '@types'
@@ -113,11 +113,15 @@ export const Room: React.FC = () => {
         </Card>
         <Card>
           <p className="truncate text-sm font-medium text-gray-500 mb-0">{t('Total')}</p>
-          <p className="text-lg font-medium text-gray-900 mb-0">{t('Money', { val: stats?.total })}</p>
+          <p className="text-lg font-medium text-gray-900 mb-0">
+            {t('Money', { val: stats?.total, minimumFractionDigits: 2 })}
+          </p>
         </Card>
         <Card>
           <p className="truncate text-sm font-medium text-gray-500 mb-0">{t('Average')}</p>
-          <p className="text-lg font-medium text-gray-900 mb-0">{t('Money', { val: stats?.average })}</p>
+          <p className="text-lg font-medium text-gray-900 mb-0">
+            {t('Money', { val: stats?.average, minimumFractionDigits: 2 })}
+          </p>
         </Card>
       </div>
 
@@ -136,15 +140,38 @@ export const Room: React.FC = () => {
               </CardAddon>
             }
             footer={
-              <CardAddon className="mt-auto">
-                <Button icon={PencilIcon} className={'w-full flex justify-center'} />
-              </CardAddon>
+              <span className="isolate w-full inline-flex rounded-md shadow-sm divide-x">
+                <button
+                  type="button"
+                  className="relative inline-flex w-full items-center rounded-l-md bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
+                >
+                  <span className="sr-only">Previous</span>
+                  <PencilIcon className="h-5 w-5" aria-hidden="true" />
+                </button>
+                {item?.invoice && (
+                  <button
+                    type="button"
+                    className="relative -ml-px inline-flex w-full items-center rounded-r-md bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
+                  >
+                    <span className="sr-only">Next</span>
+                    <PencilIcon className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                )}
+              </span>
             }
           >
-            <Text isLoading={isLoading} skeleton="xxxxxxx" as="h4">
-              {item.brand} <Text isLoading={isLoading} skeleton="xxxxxxx" text={item.model} as="span" />
-            </Text>
-            {item.price && <Text isLoading={isLoading} skeleton="xxxxxxx" text={t('Money', { val: item.price })} />}
+            <div className="h-full">
+              <Text isLoading={isLoading} skeleton="xxxxxxx" as="h4">
+                {item.brand} <Text isLoading={isLoading} skeleton="xxxxxxx" text={item.model} as="span" />
+              </Text>
+              {item.price && (
+                <Text
+                  isLoading={isLoading}
+                  skeleton="xxxxxxx"
+                  text={t('Money', { val: item.price, minimumFractionDigits: 2 })}
+                />
+              )}
+            </div>
           </Card>
         ))}
       </div>

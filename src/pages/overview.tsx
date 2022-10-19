@@ -122,6 +122,7 @@ export const Overview: React.FC = () => {
           <p className="text-lg font-medium text-gray-900 mb-0">
             {t('Money', {
               val: typeof statsGlobal?.total_price === 'number' ? statsGlobal?.total_price : 0,
+              minimumFractionDigits: 2,
             })}
           </p>
         </Card>
@@ -130,6 +131,7 @@ export const Overview: React.FC = () => {
           <p className="text-lg font-medium text-gray-900 mb-0">
             {t('Money', {
               val: typeof statsGlobal?.average_price === 'number' ? statsGlobal?.average_price : 0,
+              minimumFractionDigits: 2,
             })}
           </p>
         </Card>

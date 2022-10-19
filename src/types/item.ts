@@ -8,5 +8,7 @@ export interface IItem {
   createDate?: number
   user: string
   room: string
+  image?: string
+  invoice?: string
   categories?: Array<string>
 }
