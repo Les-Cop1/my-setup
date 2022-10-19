@@ -100,11 +100,11 @@ export const Overview: React.FC = () => {
           const tmpStatsYears = Object.entries(years).map(([year, value]) => ({ year, value }))
           setStatsYears(tmpStatsYears)
         } else {
-          console.log('error', 'Could not retrieve stats', response.error)
+          console.error('Could not retrieve stats')
         }
       })
-      .catch((error) => {
-        console.log('error', 'Could not retrieve stats', error)
+      .catch(() => {
+        console.error('Could not retrieve stats')
       })
   }
 

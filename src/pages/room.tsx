@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { getRoom } from '@api'
+import illustration from '@assets/images/empty.svg'
 import { Button, Card, CardAddon, PageHeader, Text } from '@components'
 import { stringToFloat } from '@helpers'
 import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
@@ -39,18 +40,20 @@ export const Room: React.FC = () => {
     setIsLoading(true)
     getRoom(_id ? _id : '')
       .then((response) => {
-        const { success, data, error } = response
+        const { success, data } = response
         if (success) {
           setRoom(data?.room)
-          setIsLoading(false)
         } else {
-          console.log('error', 'Could not retrieve room data', error)
+          console.error('Could not retrieve room data')
           setRoom(undefined)
         }
       })
-      .catch((error) => {
-        console.log('error', 'Could not retrieve room data', error)
+      .catch(() => {
+        console.error('Could not retrieve room data')
         setRoom(undefined)
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }
 
@@ -81,6 +84,17 @@ export const Room: React.FC = () => {
   useEffect(() => {
     getRoomData()
   }, [_id, getRooms])
+
+  if (!isLoading && room === undefined) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full bg-white">
+        <Text as="h2" className="pt-5 pb-16">
+          {t('Room not found')}
+        </Text>
+        <img src={illustration} className="max-h-96 my-auto px-5" alt="room not found" />
+      </div>
+    )
+  }
 
   return (
     <div className="my-auto">
