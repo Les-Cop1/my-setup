@@ -27,7 +27,7 @@ export const AuthLayout: React.FC = () => {
       if (success && data) {
         setRooms(data.rooms)
       } else {
-        console.log(error)
+        console.error(error)
       }
     })
   }
@@ -103,7 +103,16 @@ export const AuthLayout: React.FC = () => {
                         {rooms.map((item) => (
                           <SidebarItem label={item.name} to={`room/${item._id}`} key={item._id} isMobile />
                         ))}
-                        <SidebarItem label={t('Add room')} to="#" icon={PlusCircleIcon} isMobile />
+                        <SidebarItem
+                          label={t('Add room')}
+                          to="#"
+                          icon={PlusCircleIcon}
+                          onClick={() => {
+                            setIsSidebarOpen(false)
+                            setIsSlideOverOpen(true)
+                          }}
+                          isMobile
+                        />
                       </div>
                     </nav>
                   </div>
@@ -145,7 +154,7 @@ export const AuthLayout: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col min-h-screen md:pl-64 bg-white">
+        <div className="flex flex-col min-h-screen md:pl-64">
           <div className="block">
             <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 shadow">
               <button
@@ -199,7 +208,7 @@ export const AuthLayout: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="bg-zinc-50 ">
+          <div className="bg-zinc-50 mb-auto">
             <div className="mx-auto max-w-7xl">
               <AddRoom
                 getRooms={getRooms}
@@ -211,10 +220,7 @@ export const AuthLayout: React.FC = () => {
               <Outlet context={[getRooms]} />
             </div>
           </div>
-
-          <div className="mt-auto">
-            <Footer content={`© ${new Date().getFullYear()} - My Setup`} backgroundColor="white" />
-          </div>
+          <Footer content={`© ${new Date().getFullYear()} - My Setup`} backgroundColor="white" />
         </div>
       </div>
     </div>

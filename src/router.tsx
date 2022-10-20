@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { AuthLayout, Layout } from '@components'
-import { Account, Home, Login, NotFound, Overview, Register } from '@pages'
+import { Account, Home, Login, NotFound, Overview, Register, Room } from '@pages'
 
 import { Route, Routes } from 'react-router-dom'
 
@@ -16,6 +16,7 @@ export const Router: React.FC = () => (
     </Route>
     <Route path="setup" element={<AuthLayout />}>
       <Route index element={<Overview />} />
+      <Route path="room/:_id" element={<Room />} />
     </Route>
   </Routes>
 )
