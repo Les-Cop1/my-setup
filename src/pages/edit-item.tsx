@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { deleteItem, updateItem } from '@api'
 import { Button, ButtonVariant, Input, Select, SelectOptionProps, SlideOver } from '@components'
+import { TrashIcon } from '@heroicons/react/24/solid'
 import { IItem } from '@types'
 
 import { useTranslation } from 'react-i18next'
@@ -98,114 +99,114 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
 
   return (
     <SlideOver isOpen={isOpen} onClose={onClose} title={t('Edit item')}>
-      <div className="pb-5">
-        <Input
-          label={t('Brand')}
-          name="brand"
-          value={brand}
-          onChange={(value) => {
-            setBrand(value as string)
-          }}
-        />
-      </div>
-      <div className="pb-5">
-        <Input
-          label={t('Model')}
-          name="model"
-          value={model}
-          onChange={(value) => {
-            setModel(value as string)
-          }}
-        />
-      </div>
-      <div className="pb-5">
-        <Input
-          label={t('Price')}
-          name="price"
-          type="number"
-          value={price}
-          onChange={(value) => {
-            setPrice(value as number)
-          }}
-        />
-      </div>
-      <div className="pb-5">
-        <Input
-          label={t('Purchase Date')}
-          name="purchaseDate"
-          type="date"
-          value={purchaseDate?.toString()}
-          onChange={(value) => {
-            setPurchaseDate(new Date(value))
-          }}
-        />
-      </div>
-      <div className="pb-5">
-        <Input
-          label={t('Link')}
-          name="link"
-          value={link}
-          onChange={(value) => {
-            setLink(value as string)
-          }}
-        />
-      </div>
-      <div className="pb-5">
-        <Select
-          label={t('Categories')}
-          name="categories"
-          multiple={true}
-          value={categories}
-          options={category}
-          onChange={(value) => {
-            setCategories([...categories, value])
-          }}
-          placeholder={t('Please select a category')}
-        />
-      </div>
-      <div className="pb-5">
-        <Input
-          label={t('Description')}
-          name="description"
-          value={description}
-          onChange={(value) => {
-            setDescription(value as string)
-          }}
-        />
-      </div>
-      <div className="pb-5">
-        <Input
-          label={t('Invoice')}
-          name="invoice"
-          value={invoice}
-          onChange={(value) => {
-            setInvoice(value as string)
-          }}
-        />
-      </div>
+      <div className="flex flex-col h-full justify-between">
+        <div>
+          <div className="pb-5">
+            <Input
+              label={t('Brand')}
+              name="brand"
+              value={brand}
+              onChange={(value) => {
+                setBrand(value as string)
+              }}
+            />
+          </div>
+          <div className="pb-5">
+            <Input
+              label={t('Model')}
+              name="model"
+              value={model}
+              onChange={(value) => {
+                setModel(value as string)
+              }}
+            />
+          </div>
+          <div className="pb-5">
+            <Input
+              label={t('Price')}
+              name="price"
+              type="number"
+              value={price}
+              onChange={(value) => {
+                setPrice(value as number)
+              }}
+            />
+          </div>
+          <div className="pb-5">
+            <Input
+              label={t('Purchase Date')}
+              name="purchaseDate"
+              type="date"
+              value={purchaseDate?.toString()}
+              onChange={(value) => {
+                setPurchaseDate(new Date(value))
+              }}
+            />
+          </div>
+          <div className="pb-5">
+            <Input
+              label={t('Link')}
+              name="link"
+              value={link}
+              onChange={(value) => {
+                setLink(value as string)
+              }}
+            />
+          </div>
+          <div className="pb-5">
+            <Select
+              label={t('Categories')}
+              name="categories"
+              multiple={true}
+              value={categories}
+              options={category}
+              onChange={(value) => {
+                setCategories([...categories, value])
+              }}
+              placeholder={t('Please select a category')}
+            />
+          </div>
+          <div className="pb-5">
+            <Input
+              label={t('Description')}
+              name="description"
+              value={description}
+              onChange={(value) => {
+                setDescription(value as string)
+              }}
+            />
+          </div>
+          <div className="pb-5">
+            <Input
+              label={t('Invoice')}
+              name="invoice"
+              value={invoice}
+              onChange={(value) => {
+                setInvoice(value as string)
+              }}
+            />
+          </div>
+        </div>
 
-      <div className="flex justify-end">
-        <Button onClick={handleClose}>{t('Close')}</Button>
-        <Button
-          onClick={(_) => {
-            handleEditItem()
-          }}
-          variant={ButtonVariant.SUCCESS}
-          className="ml-2"
-        >
-          {t('Edit item')}
-        </Button>
-      </div>
-      <div className="flex justify-end mt-5">
-        <Button
-          onClick={(_) => {
-            handleDeleteItem()
-          }}
-          variant={ButtonVariant.DANGER}
-          className="ml-2"
-        >
-          {t('Delete item')}
-        </Button>
+        <div className="flex">
+          <span className="sr-only">{t('Delete item')}</span>
+          <Button
+            onClick={(_) => {
+              handleDeleteItem()
+            }}
+            variant={ButtonVariant.DANGER}
+            icon={TrashIcon}
+            className="mr-auto"
+          />
+          <Button onClick={handleClose} className="mx-2" label={t('Close')} />
+          <Button
+            onClick={(_) => {
+              handleEditItem()
+            }}
+            variant={ButtonVariant.SUCCESS}
+            label={t('Edit item')}
+          />
+        </div>
       </div>
     </SlideOver>
   )
