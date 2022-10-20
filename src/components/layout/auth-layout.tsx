@@ -103,7 +103,16 @@ export const AuthLayout: React.FC = () => {
                         {rooms.map((item) => (
                           <SidebarItem label={item.name} to={`room/${item._id}`} key={item._id} isMobile />
                         ))}
-                        <SidebarItem label={t('Add room')} to="#" icon={PlusCircleIcon} isMobile />
+                        <SidebarItem
+                          label={t('Add room')}
+                          to="#"
+                          icon={PlusCircleIcon}
+                          onClick={() => {
+                            setIsSidebarOpen(false)
+                            setIsSlideOverOpen(true)
+                          }}
+                          isMobile
+                        />
                       </div>
                     </nav>
                   </div>

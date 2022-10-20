@@ -73,26 +73,23 @@ export const EditRoom: React.FC<EditRoomProps> = ({ isOpen, onClose, getRooms, r
           />
         </div>
         <div className="flex">
+          <span className="sr-only">{t('Delete room')}</span>
           <Button
             onClick={(_) => {
               deleteRoomHandler()
             }}
             variant={ButtonVariant.DANGER}
-            ariaLabel={t('Delete room')}
             icon={TrashIcon}
             className="mr-auto"
           />
-          <Button onClick={handleClose} className="mx-2">
-            {t('Close')}
-          </Button>
+          <Button onClick={handleClose} className="mx-2" label={t('Close')} />
           <Button
             onClick={(_) => {
               handleEditRoom()
             }}
             variant={ButtonVariant.SUCCESS}
-          >
-            {t('Edit room')}
-          </Button>
+            label={t('Edit room')}
+          />
         </div>
       </div>
     </SlideOver>

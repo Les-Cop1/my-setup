@@ -26,6 +26,5 @@ export interface ButtonProps extends ComponentType {
   isDisabled?: boolean
   isLoading?: boolean
   onClick?: OnClickType
-  ariaLabel?: string
   children?: React.ReactNode
 }

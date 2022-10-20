@@ -143,17 +143,17 @@ export const Room: React.FC = () => {
               <span className="isolate w-full inline-flex rounded-md shadow-sm divide-x">
                 <button
                   type="button"
-                  className="relative inline-flex w-full items-center rounded-l-md bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
+                  className="relative inline-flex w-full items-center rounded-l-md bg-white px-2 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
                 >
-                  <span className="sr-only">Previous</span>
+                  <span className="sr-only">{t('Edit item')}</span>
                   <PencilIcon className="h-5 w-5" aria-hidden="true" />
                 </button>
                 {item?.invoice && (
                   <button
                     type="button"
-                    className="relative -ml-px inline-flex w-full items-center rounded-r-md bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
+                    className="relative -ml-px inline-flex w-full items-center rounded-r-md bg-white px-2 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
                   >
-                    <span className="sr-only">Next</span>
+                    <span className="sr-only">{t('Open invoice')}</span>
                     <PencilIcon className="h-5 w-5" aria-hidden="true" />
                   </button>
                 )}
