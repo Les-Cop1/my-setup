@@ -23,22 +23,15 @@ const config: Config = {
   },
   testEnvironment: 'jsdom',
   snapshotResolver: '<rootDir>/src/config/snapshotResolver.js',
-  modulePathIgnorePatterns: [
-    'node_modules',
-    'dist',
-    '<rootDir>/src/assets/',
-    '<rootDir>/src/hooks/',
-    '<rootDir>/src/context/',
-    '<rootDir>/src/types/',
-    '<rootDir>/src/*/index.ts',
-  ],
+  modulePathIgnorePatterns: ['node_modules', 'dist'],
   coverageDirectory: 'coverage',
   coverageReporters: ['json-summary', 'text'],
-  coveragePathIgnorePatterns: [
-    '<rootDir>/src/config/',
-    '<rootDir>/src/hooks/',
-    '<rootDir>/src/contexts/',
-    '<rootDir>/src/api/',
+  collectCoverageFrom: [
+    '<rootDir>/src/components/**/*.{ts,tsx,js,jsx}',
+    '<rootDir>/src/helpers/**/*.{ts,tsx,js,jsx}',
+    '<rootDir>/src/pages/**/*.{ts,tsx,js,jsx}',
+    '!<rootDir>/src/**/*.props.{ts,tsx,js,jsx}',
+    '!<rootDir>/src/**/index.{ts,tsx,js,jsx}',
   ],
 }
 
