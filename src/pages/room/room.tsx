@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 
 import { getCategories, getRoom } from '@api'
 import illustration from '@assets/images/empty.svg'
-import { Card, CardAddon, PageHeader, SelectOptionProps, Text } from '@components'
+import { AddItem, Card, CardAddon, EditItem, EditRoom, PageHeader, SelectOptionProps, Text } from '@components'
 import { stringToFloat } from '@helpers'
 import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
-import { AddItem, EditItem, EditRoom } from '@pages'
 import { IItem, IRoom } from '@types'
 
 import { useTranslation } from 'react-i18next'
