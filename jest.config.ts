@@ -23,7 +23,15 @@ const config: Config = {
   },
   testEnvironment: 'jsdom',
   snapshotResolver: '<rootDir>/src/config/snapshotResolver.js',
-  modulePathIgnorePatterns: ['node_modules', 'dist', '.jest-test-results.json'],
+  modulePathIgnorePatterns: [
+    'node_modules',
+    'dist',
+    '<rootDir>/src/assets/',
+    '<rootDir>/src/hooks/',
+    '<rootDir>/src/context/',
+    '<rootDir>/src/components/index.ts',
+    '<rootDir>/src/**/index.ts',
+  ],
   coverageDirectory: 'coverage',
   coverageReporters: ['json-summary', 'text'],
   coveragePathIgnorePatterns: [
