@@ -1,6 +1,5 @@
+import { ButtonProps } from '@components'
 import { IconType } from '@types'
-
-import { ButtonProps } from '../button'
 
 export type PageHeaderProps = {
   title: string
