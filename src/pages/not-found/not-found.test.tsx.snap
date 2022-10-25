@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Not found Snapshot 1`] = `
+<div>
+  <div
+    class="w-full flex flex-col items-center justify-center p-10 gap-6"
+  >
+    <img
+      alt="page not found illustration"
+      class="max-h-96"
+      src=""
+    />
+    <h1>
+      This page doesn't exist
+    </h1>
+  </div>
+</div>
+`;
