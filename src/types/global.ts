@@ -21,5 +21,5 @@ export type RegisteredFile = {
 }
 
 export const isRegisteredFile = (file: any): file is RegisteredFile => {
-  return file && file._id && file.name
+  return file && file._id && file.name && file._id !== '' && file.name !== ''
 }

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import { deleteItem, updateItem } from '@api'
 import { Button, ButtonVariant, Input, Select, SelectOptionProps, SlideOver, Upload } from '@components'
-import { TrashIcon } from '@heroicons/react/24/solid'
+import { TrashIcon } from '@heroicons/react/24/outline'
+import { DocumentIcon } from '@heroicons/react/24/solid'
 import { IItem, RegisteredFile, isRegisteredFile } from '@types'
 
 import { getBaseURL } from '../../setupAxios'
@@ -22,9 +23,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
   const [brand, setBrand] = useState<string>(item?.brand || '')
   const [model, setModel] = useState<string>(item?.model || '')
   const [price, setPrice] = useState<number | undefined>(item?.price)
-  const [purchaseDate, setPurchaseDate] = useState<Date | undefined>(
-    item?.purchaseDate ? new Date(item?.purchaseDate) : undefined,
-  )
+  const [purchaseDate, setPurchaseDate] = useState<string>(item?.purchaseDate?.split('T')[0] || '')
   const [link, setLink] = useState<string>(item?.link || '')
   const [categories, setCategories] = useState<any>([])
   const [description, setDescription] = useState<string>(item?.description || '')
@@ -34,7 +33,9 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleClose = () => {
-    resetData()
+    setTimeout(() => {
+      resetData()
+    }, 500)
     onClose()
   }
 
@@ -42,7 +43,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
     setBrand('')
     setModel('')
     setPrice(undefined)
-    setPurchaseDate(undefined)
+    setPurchaseDate('')
     setLink('')
     setCategories([])
     setDescription('')
@@ -64,6 +65,14 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
     })
   }
 
+  const handleDeleteInvoice = () => {
+    if (isRegisteredFile(invoice)) setInvoice({ ...invoice, _id: '', name: '' })
+  }
+
+  const handleDeleteImage = () => {
+    if (isRegisteredFile(image)) setImage({ ...image, _id: '', name: '' })
+  }
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -73,7 +82,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
     data.append('brand', brand)
     data.append('model', model)
     data.append('price', price?.toString() || '')
-    data.append('purchaseDate', purchaseDate?.toISOString() || '')
+    data.append('purchaseDate', purchaseDate)
     data.append('link', link)
     data.append('categories', JSON.stringify(categories))
     data.append('description', description)
@@ -104,7 +113,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
     if (item?.brand) setBrand(item?.brand)
     if (item?.model) setModel(item?.model)
     if (item?.price) setPrice(item?.price)
-    if (item?.purchaseDate) setPurchaseDate(new Date(item?.purchaseDate))
+    if (item?.purchaseDate) setPurchaseDate(item?.purchaseDate.split('T')[0])
     if (item?.link) setLink(item?.link)
     if (item?.categories) setCategories(item?.categories)
     if (item?.description) setDescription(item?.description)
@@ -119,12 +128,25 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
           <div>
             <div className="pb-5">
               <div className="flex items-center">
-                <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-100">
+                <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-100 relative">
                   {image && (
                     <img
-                      src={isRegisteredFile(image) ? `${getBaseURL()}/file/${image._id}` : URL.createObjectURL(image)}
-                      alt={t('item')}
+                      src={
+                        isRegisteredFile(image)
+                          ? `${getBaseURL()}/file/${image._id}`
+                          : URL.createObjectURL(image.name === '' ? new Blob() : image)
+                      }
+                      alt={isRegisteredFile(image) ? t('Item') : ''}
                     />
+                  )}
+                  {isRegisteredFile(image) && (
+                    <div
+                      className="opacity-0 hover:opacity-100 ease-in-out duration-300 cursor-pointer bg-red-700/30 h-12 w-12 overflow-hidden rounded-full absolute top-0 left-0 flex justify-center items-center"
+                      onClick={handleDeleteImage}
+                    >
+                      <span className="sr-only">{t('Delete image')}</span>
+                      <TrashIcon className="h-6 w-6 text-white" />
+                    </div>
                   )}
                 </span>
                 <Upload
@@ -176,7 +198,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
                 type="date"
                 value={purchaseDate?.toString()}
                 onChange={(value) => {
-                  setPurchaseDate(new Date(value))
+                  setPurchaseDate(value as string)
                 }}
               />
             </div>
@@ -215,7 +237,34 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
             </div>
             <div className="pb-5">
               {isRegisteredFile(invoice) ? (
-                <div>{invoice.name}</div>
+                <div>
+                  <p className="block text-sm font-medium text-slate-700">{t('Invoice')}</p>
+                  <div className="flex justify-between items-center">
+                    {invoice.name}
+                    <div className="flex justify-center">
+                      <Button
+                        type="button"
+                        onClick={(_) => {
+                          window.open(`${getBaseURL()}/file/${invoice._id}`, '_blank')
+                        }}
+                        icon={DocumentIcon}
+                        className="mx-2"
+                      >
+                        <span className="sr-only">{t('Open invoice')}</span>
+                      </Button>
+                      <Button
+                        onClick={(_) => {
+                          handleDeleteInvoice()
+                        }}
+                        type="button"
+                        icon={TrashIcon}
+                        className="mx-2"
+                      >
+                        <span className="sr-only">{t('Delete invoice')}</span>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               ) : (
                 <Upload
                   name="invoice"

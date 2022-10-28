@@ -63,7 +63,7 @@ export const Button: React.FC<ButtonProps> = ({
       {...props}
     >
       {Icon && (
-        <span className={classNames('flex items-center', children || label ? 'mr-1' : '')}>
+        <span className={classNames('flex items-center', label ? 'mr-1' : '')}>
           <Icon className="h-5 w-5" />
         </span>
       )}

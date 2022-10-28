@@ -28,7 +28,7 @@ export const Room: React.FC = () => {
   const { _id } = useParams()
   const { t } = useTranslation()
 
-  const [room, setRoom] = useState<IRoom | undefined>()
+  const [room, setRoom] = useState<IRoom | undefined | null>()
   const [category, setCategory] = useState<SelectOptionProps[]>([])
   const [itemToEdit, setItemToEdit] = useState<IItem | undefined>()
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -49,12 +49,12 @@ export const Room: React.FC = () => {
           setRoom(data?.room)
         } else {
           console.error('Could not retrieve room data')
-          setRoom(undefined)
+          setRoom(null)
         }
       })
       .catch(() => {
         console.error('Could not retrieve room data')
-        setRoom(undefined)
+        setRoom(null)
       })
       .finally(() => {
         setIsLoading(false)
@@ -114,7 +114,7 @@ export const Room: React.FC = () => {
     getCategory()
   }, [_id, getRooms])
 
-  if (!isLoading && room === undefined) {
+  if (!isLoading && room === null) {
     return (
       <div className="flex flex-col items-center justify-center h-full bg-white">
         <Text as="h2" className="pt-5 pb-16">
@@ -225,29 +225,34 @@ export const Room: React.FC = () => {
           </Card>
         ))}
       </div>
-      <EditRoom
-        getRooms={getRooms}
-        isOpen={isSidebarOpenRoom}
-        onClose={() => {
-          setIsSidebarOpenRoom(false)
-        }}
-        room={room}
-      />
-      <AddItem
-        getRooms={getRooms}
-        isOpen={isSidebarOpenAddItem}
-        onClose={() => {
-          setIsSidebarOpenAddItem(false)
-        }}
-        category={category}
-        room={room}
-      />
+      {room && (
+        <>
+          <EditRoom
+            getRooms={getRooms}
+            isOpen={isSidebarOpenRoom}
+            onClose={() => {
+              setIsSidebarOpenRoom(false)
+            }}
+            room={room}
+          />
+          <AddItem
+            getRooms={getRooms}
+            isOpen={isSidebarOpenAddItem}
+            onClose={() => {
+              setIsSidebarOpenAddItem(false)
+            }}
+            category={category}
+            room={room}
+          />
+        </>
+      )}
 
       <EditItem
         getRooms={getRooms}
         isOpen={isSidebarOpenEditItem}
         onClose={() => {
           setIsSidebarOpenEditItem(false)
+          setItemToEdit(undefined)
         }}
         category={category}
         item={itemToEdit}
