@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { IUser } from '@types'
-
 export type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>
 
 export type ComponentType = {
@@ -14,9 +12,14 @@ export type ResponseType<Type = null> = {
   data?: Type
   error?: any
 }
-export type AuthContextType = {
-  user: IUser | null
-  signout: () => void
-}
 
 export type OnClickType = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
+
+export type RegisteredFile = {
+  _id: string
+  name: string
+}
+
+export const isRegisteredFile = (file: any): file is RegisteredFile => {
+  return file && file._id && file.name
+}

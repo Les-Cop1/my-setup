@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react'
 
-import { Text, UploadProps } from '@components'
+import { UploadProps } from '@components'
+import { DocumentIcon, DocumentPlusIcon } from '@heroicons/react/24/outline'
 
+import { useTranslation } from 'react-i18next'
 import { v4 as uuid } from 'uuid'
 
 export const Upload: React.FC<UploadProps> = ({
@@ -15,9 +17,9 @@ export const Upload: React.FC<UploadProps> = ({
   onFileSelectError,
   maxSize = 2048,
   disabled = false,
-  required = false,
   ...props
 }) => {
+  const { t } = useTranslation()
   const fileInput = useRef<HTMLInputElement>(null)
   const id = uuid()
 
@@ -54,30 +56,35 @@ export const Upload: React.FC<UploadProps> = ({
   }, [fileData])
 
   return (
-    <div className="field">
-      <div className="control">
-        <input
-          id={id}
-          name={name}
-          accept={accept}
-          type="file"
-          onChange={handleFileInput}
-          ref={fileInput}
-          className={`input ${className}`}
-          disabled={disabled}
-          {...props}
-        />
-        {label && (
-          <label htmlFor={id} className="button is-secondary">
-            {label}
-            {required ? ' *' : ''}
-          </label>
-        )}
-        {fileData && (
-          <button className="delete-file-button" type="button" onClick={() => reset()}>
-            <Text>{fileData.name}</Text>
-          </button>
-        )}
+    <div className="mt-1 sm:col-span-2 sm:mt-0">
+      <div className="flex max-w-lg justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+        <div className="space-y-1 text-center">
+          {fileData ? (
+            <DocumentIcon className="mx-auto h-12 w-12 text-gray-400" />
+          ) : (
+            <DocumentPlusIcon className="mx-auto h-12 w-12 text-gray-400" />
+          )}
+          <div className="flex text-sm text-gray-600">
+            <label
+              htmlFor={id}
+              className="relative cursor-pointer rounded-md bg-white font-medium text-emerald-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-emerald-500 focus-within:ring-offset-2 hover:text-emerald-500"
+            >
+              <span>{fileData?.name || label}</span>
+              <input
+                id={id}
+                name={name}
+                accept={accept}
+                onChange={handleFileInput}
+                ref={fileInput}
+                type="file"
+                className="sr-only"
+                disabled={disabled}
+                {...props}
+              />
+            </label>
+          </div>
+          <p className="text-xs text-gray-500">{t('PDF up to xMB', { val: 2 })}</p>
+        </div>
       </div>
     </div>
   )

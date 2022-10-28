@@ -4,9 +4,10 @@ import { getCategories, getRoom } from '@api'
 import illustration from '@assets/images/empty.svg'
 import { AddItem, Card, CardAddon, EditItem, EditRoom, PageHeader, SelectOptionProps, Text } from '@components'
 import { stringToFloat } from '@helpers'
-import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
+import { DocumentIcon, PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { IItem, IRoom } from '@types'
 
+import { getBaseURL } from '../../setupAxios'
 import { useTranslation } from 'react-i18next'
 import { useOutletContext, useParams } from 'react-router-dom'
 import { ShapeProps, SvgBlob } from 'react-svg-blob'
@@ -64,7 +65,7 @@ export const Room: React.FC = () => {
     setIsLoading(true)
     getCategories()
       .then((response) => {
-        const { success, data, error } = response
+        const { success, data } = response
         if (success) {
           const categoryList = data?.categories.map((category) => ({
             id: category,
@@ -74,12 +75,12 @@ export const Room: React.FC = () => {
           setCategory(categoryList ? categoryList : [])
           setIsLoading(false)
         } else {
-          console.log('error', 'Could not retrieve category data', error)
+          console.error('Could not retrieve category data')
           setCategory([])
         }
       })
-      .catch((error) => {
-        console.log('error', 'Could not retrieve category data', error)
+      .catch(() => {
+        console.error('Could not retrieve category data')
         setCategory([])
       })
   }
@@ -180,9 +181,10 @@ export const Room: React.FC = () => {
               <span className="isolate w-full inline-flex rounded-md shadow-sm divide-x">
                 <button
                   type="button"
+                  title={t('Edit item')}
                   className="relative inline-flex w-full items-center rounded-l-md bg-white px-2 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
                   onClick={(_) => {
-                    handleEditItem(item as IItem)
+                    handleEditItem(item)
                   }}
                 >
                   <span className="sr-only">{t('Edit item')}</span>
@@ -191,10 +193,14 @@ export const Room: React.FC = () => {
                 {item?.invoice && (
                   <button
                     type="button"
+                    title={t('Open invoice')}
+                    onClick={(_) => {
+                      window.open(`${getBaseURL()}/file/${item.invoice}`, '_blank')
+                    }}
                     className="relative -ml-px inline-flex w-full items-center rounded-r-md bg-white px-2 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
                   >
                     <span className="sr-only">{t('Open invoice')}</span>
-                    <PencilIcon className="h-5 w-5" aria-hidden="true" />
+                    <DocumentIcon className="h-5 w-5" aria-hidden="true" />
                   </button>
                 )}
               </span>

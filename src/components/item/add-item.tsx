@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { createItem } from '@api'
-import { Button, ButtonVariant, Input, Select, SelectOptionProps, SlideOver } from '@components'
+import { Button, ButtonVariant, Input, Select, SelectOptionProps, SlideOver, Upload } from '@components'
 import { IRoom } from '@types'
 
 import { useTranslation } from 'react-i18next'
@@ -25,7 +25,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
   const [link, setLink] = useState<string>('')
   const [categories, setCategories] = useState<any>([])
   const [description, setDescription] = useState<string>('')
-  const [invoice, setInvoice] = useState<string>('')
+  const [invoice, setInvoice] = useState<File | undefined>(undefined)
 
   const handleClose = () => {
     setBrand('')
@@ -35,7 +35,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
     setLink('')
     setCategories([])
     setDescription('')
-    setInvoice('')
+    setInvoice(undefined)
     onClose()
   }
 
@@ -57,7 +57,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
         getRooms()
         handleClose()
       } else {
-        console.log(error)
+        console.error(error)
       }
     })
   }
@@ -143,13 +143,12 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
             />
           </div>
           <div className="pb-5">
-            <Input
-              label={t('Invoice')}
+            <Upload
               name="invoice"
-              value={invoice}
-              onChange={(value) => {
-                setInvoice(value as string)
-              }}
+              label={t('Upload an invoice')}
+              file={invoice}
+              accept="application/pdf"
+              onFileSelect={(e) => setInvoice(e)}
             />
           </div>
         </div>
