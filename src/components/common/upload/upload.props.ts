@@ -9,4 +9,5 @@ export type UploadProps = {
   maxSize?: number
   disabled?: boolean
   resetFile?: () => void
+  type?: 'button' | 'area'
 }

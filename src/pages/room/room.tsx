@@ -5,7 +5,7 @@ import illustration from '@assets/images/empty.svg'
 import { AddItem, Card, CardAddon, EditItem, EditRoom, PageHeader, SelectOptionProps, Text } from '@components'
 import { stringToFloat } from '@helpers'
 import { DocumentIcon, PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
-import { IItem, IRoom } from '@types'
+import { IItem, IRoom, isRegisteredFile } from '@types'
 
 import { getBaseURL } from '../../setupAxios'
 import { useTranslation } from 'react-i18next'
@@ -169,12 +169,16 @@ export const Room: React.FC = () => {
             key={item._id}
             header={
               <CardAddon>
-                <SvgBlob
-                  shapeProps={itemsAspect[index]}
-                  variant="gradient"
-                  colors={['#2dd4bf', '#0d9488']}
-                  className="p-8"
-                />
+                {isRegisteredFile(item.image) ? (
+                  <img src={`${getBaseURL()}/file/${item.image._id}`} alt={item.image.name} />
+                ) : (
+                  <SvgBlob
+                    shapeProps={itemsAspect[index]}
+                    variant="gradient"
+                    colors={['#2dd4bf', '#0d9488']}
+                    className="p-8"
+                  />
+                )}
               </CardAddon>
             }
             footer={

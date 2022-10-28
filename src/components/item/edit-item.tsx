@@ -5,6 +5,7 @@ import { Button, ButtonVariant, Input, Select, SelectOptionProps, SlideOver, Upl
 import { TrashIcon } from '@heroicons/react/24/solid'
 import { IItem, RegisteredFile, isRegisteredFile } from '@types'
 
+import { getBaseURL } from '../../setupAxios'
 import { useTranslation } from 'react-i18next'
 
 type EditItemProps = {
@@ -27,6 +28,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
   const [link, setLink] = useState<string>(item?.link || '')
   const [categories, setCategories] = useState<any>([])
   const [description, setDescription] = useState<string>(item?.description || '')
+  const [image, setImage] = useState<File | RegisteredFile | undefined>(item?.image)
   const [invoice, setInvoice] = useState<File | RegisteredFile | undefined>(item?.invoice)
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -44,6 +46,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
     setLink('')
     setCategories([])
     setDescription('')
+    setImage(undefined)
     setInvoice(undefined)
     setIsLoading(false)
   }
@@ -74,6 +77,9 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
     data.append('link', link)
     data.append('categories', JSON.stringify(categories))
     data.append('description', description)
+    if (image && !isRegisteredFile(image)) {
+      data.append('image', image)
+    }
     if (invoice && !isRegisteredFile(invoice)) {
       data.append('invoice', invoice)
     }
@@ -102,14 +108,36 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
     if (item?.link) setLink(item?.link)
     if (item?.categories) setCategories(item?.categories)
     if (item?.description) setDescription(item?.description)
+    if (item?.image) setImage(item?.image)
     if (item?.invoice) setInvoice(item?.invoice)
   }, [item])
 
   return (
-    <SlideOver isOpen={isOpen} onClose={onClose} title={t('Edit item')}>
+    <SlideOver isOpen={isOpen} onClose={handleClose} title={t('Edit item')}>
       <form onSubmit={onSubmit}>
         <div className="flex flex-col h-full justify-between">
           <div>
+            <div className="pb-5">
+              <div className="flex items-center">
+                <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-100">
+                  {image && (
+                    <img
+                      src={isRegisteredFile(image) ? `${getBaseURL()}/file/${image._id}` : URL.createObjectURL(image)}
+                      alt={t('item')}
+                    />
+                  )}
+                </span>
+                <Upload
+                  type="button"
+                  name="image"
+                  label={t(isRegisteredFile(image) ? 'Update the image' : 'Upload an image')}
+                  file={!isRegisteredFile(image) ? image : undefined}
+                  accept="image/png, image/jpeg"
+                  onFileSelect={(e) => setImage(e)}
+                  onFileSelectError={(e) => console.error(e)}
+                />
+              </div>
+            </div>
             <div className="pb-5">
               <Input
                 label={t('Brand')}

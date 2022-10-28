@@ -24,7 +24,7 @@ export const SelectOption: React.FC<SelectOptionProps> = (props) => {
             {props.image && <img src={props.image} alt="" className="h-6 w-6 flex-shrink-0 rounded-full mr-2" />}
             <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'truncate')}>{props.text}</span>
             {props.description && (
-              <span className={classNames(active ? 'text-indigo-200' : 'text-slate-500', 'ml-2 truncate')}>
+              <span className={classNames(active ? 'text-teal-200' : 'text-slate-500', 'ml-2 truncate')}>
                 {props.description}
               </span>
             )}
