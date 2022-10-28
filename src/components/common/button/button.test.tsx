@@ -4,7 +4,7 @@ import { Button, ButtonSize, ButtonVariant } from '@components'
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 
-describe('button', () => {
+describe('Button', () => {
   test('Button should be defined', () => {
     render(<Button testid="testId" />)
     expect(screen.getByTestId('testId')).toBeInTheDocument()
