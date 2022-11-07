@@ -14,4 +14,5 @@ export type CardAddonProps = {
   content?: React.ReactNode
   children?: React.ReactNode
   className?: string
+  isFullWidth?: boolean
 }

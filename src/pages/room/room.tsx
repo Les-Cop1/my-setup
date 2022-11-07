@@ -189,10 +189,10 @@ export const Room: React.FC = () => {
           <Card
             key={item._id}
             header={
-              <CardAddon>
+              <CardAddon isFullWidth={true}>
                 {isRegisteredFile(item.image) ? (
                   <img
-                    className="aspect-square object-cover rounded-lg"
+                    className="aspect-square object-cover"
                     src={`${getBaseURL()}/file/${item.image._id}`}
                     alt={item.image.name}
                   />
