@@ -6,7 +6,13 @@ import { IconType } from '@types'
 
 import { AlertProps } from './alert.props'
 
-export const Alert: React.FC<AlertProps> = ({ message, type = 'error', isDismissible = true, ...props }) => {
+export const Alert: React.FC<AlertProps> = ({
+  message,
+  type = 'error',
+  isDismissible = true,
+  className = '',
+  ...props
+}) => {
   let Icon: IconType
   let bgColor: string
   let textColor: string
@@ -38,7 +44,7 @@ export const Alert: React.FC<AlertProps> = ({ message, type = 'error', isDismiss
   }
 
   return (
-    <div className={classNames('rounded-md p-4', bgColor)} {...props}>
+    <div className={classNames('rounded-md p-4', bgColor, className)} {...props}>
       <div className="flex">
         <div className="flex-shrink-0">
           <Icon className={classNames('h-5 w-5', textColor)} aria-hidden="true" />

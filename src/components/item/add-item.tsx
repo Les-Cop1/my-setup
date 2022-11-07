@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { createItem } from '@api'
-import { Button, ButtonVariant, Input, Select, SelectOptionProps, SlideOver, Upload } from '@components'
+import { Alert, Button, ButtonVariant, Input, Select, SelectOptionProps, SlideOver, Upload } from '@components'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { IRoom, isFile, isRegisteredFile } from '@types'
 
@@ -27,6 +27,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
   const [description, setDescription] = useState<string>('')
   const [image, setImage] = useState<File | undefined>(undefined)
   const [invoice, setInvoice] = useState<File | undefined>(undefined)
+  const [alert, setAlert] = useState<string>('')
 
   const handleClose = () => {
     setBrand('')
@@ -38,6 +39,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
     setDescription('')
     setImage(undefined)
     setInvoice(undefined)
+    setAlert('')
     onClose()
   }
 
@@ -73,6 +75,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
     <SlideOver isOpen={isOpen} onClose={onClose} title={t('Add item')}>
       <div className="flex flex-col h-full justify-between">
         <div>
+          {alert !== '' && <Alert className="mb-5" message={alert} isDismissible={false} />}
           <div className="pb-5">
             <div className="flex items-center">
               <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-100 relative">
@@ -99,8 +102,11 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
                 label={t(isRegisteredFile(image) ? 'Update the image' : 'Upload an image')}
                 file={!isRegisteredFile(image) ? image : undefined}
                 accept="image/png, image/jpeg"
-                onFileSelect={(e) => setImage(e)}
-                onFileSelectError={(e) => console.error(e)}
+                onFileSelect={(e) => {
+                  setImage(e)
+                  setAlert('')
+                }}
+                onFileSelectError={(e) => setAlert(e)}
               />
             </div>
           </div>
@@ -186,7 +192,17 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
               label={t('Upload an invoice')}
               file={invoice}
               accept="application/pdf"
-              onFileSelect={(e) => setInvoice(e)}
+              onFileSelect={(e) => {
+                setInvoice(e)
+                setAlert('')
+              }}
+              onFileSelectError={(e) => {
+                setAlert(e)
+                console.log(document.getElementById('alert'))
+                document.getElementById('headlessui-dialog-title-:r7:')?.scrollIntoView({
+                  behavior: 'smooth',
+                })
+              }}
             />
           </div>
         </div>
