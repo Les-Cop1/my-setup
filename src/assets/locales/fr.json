@@ -24,6 +24,7 @@
 		"Item_one": "Objet",
 		"Item_other": "Objets",
 		"Link": "Lien",
+		"Loading...": "Chargement...",
 		"Logout": "Déconnexion",
 		"Model": "Modèle",
 		"Money": "{{val, number}} €",

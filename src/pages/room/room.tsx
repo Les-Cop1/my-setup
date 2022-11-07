@@ -2,7 +2,17 @@ import React, { useEffect, useState } from 'react'
 
 import { getCategories, getRoom } from '@api'
 import illustration from '@assets/images/empty.svg'
-import { AddItem, Card, CardAddon, EditItem, EditRoom, PageHeader, SelectOptionProps, Text } from '@components'
+import {
+  AddItem,
+  Card,
+  CardAddon,
+  EditItem,
+  EditRoom,
+  PageHeader,
+  SelectOptionProps,
+  Text,
+  TextVariant,
+} from '@components'
 import { stringToFloat } from '@helpers'
 import { DocumentIcon, PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { IItem, IRoom, isRegisteredFile } from '@types'
@@ -114,7 +124,26 @@ export const Room: React.FC = () => {
     getCategory()
   }, [_id, getRooms])
 
-  if (!isLoading && room === null) {
+  const handleEditItem = (item: IItem) => {
+    setItemToEdit(item)
+    setIsSidebarOpenEditItem(true)
+  }
+
+  const handleAddItem = () => {
+    setIsSidebarOpenAddItem(true)
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center w-100 p-5">
+        <Text variant={TextVariant.GREY} as="h4">
+          {t('Loading...')}
+        </Text>
+      </div>
+    )
+  }
+
+  if (room === null) {
     return (
       <div className="flex flex-col items-center justify-center h-full bg-white">
         <Text as="h2" className="pt-5 pb-16">
@@ -123,15 +152,6 @@ export const Room: React.FC = () => {
         <img src={illustration} className="max-h-96 my-auto px-5" alt="room not found" />
       </div>
     )
-  }
-
-  const handleEditItem = (item: IItem) => {
-    setItemToEdit(item)
-    setIsSidebarOpenEditItem(true)
-  }
-
-  const handleAddItem = () => {
-    setIsSidebarOpenAddItem(true)
   }
 
   return (
@@ -225,6 +245,7 @@ export const Room: React.FC = () => {
           </Card>
         ))}
       </div>
+
       {room && (
         <>
           <EditRoom

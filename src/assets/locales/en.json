@@ -24,6 +24,7 @@
 		"Item_one": "Item",
 		"Item_other": "Items",
 		"Link": "Link",
+		"Loading...": "Loading...",
 		"Logout": "Logout",
 		"Model": "Model",
 		"Money": "$ {{val, number}}",
