@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 
 import { SelectOption, SelectOptionProps, SelectProps } from '@components'
 import { Listbox, Transition } from '@headlessui/react'
@@ -29,6 +29,12 @@ export const Select: React.FC<SelectProps> = ({
     setSelected(newValue)
     onChange?.(newValue)
   }
+
+  useEffect(() => {
+    if (value !== selected) {
+      setSelected(value)
+    }
+  }, [value])
 
   return (
     <Listbox value={selected} onChange={_onChange} multiple={multiple} by="id" name={name} disabled={isDisabled}>

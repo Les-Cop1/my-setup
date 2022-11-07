@@ -15,6 +15,8 @@ export type ResponseType<Type = null> = {
 
 export type OnClickType = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
 
+export type LanguageType = 'en' | 'fr'
+
 export type RegisteredFile = {
   _id: string
   name: string

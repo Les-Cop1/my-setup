@@ -15,7 +15,7 @@ import {
 } from '@components'
 import { stringToFloat } from '@helpers'
 import { DocumentIcon, PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
-import { IItem, IRoom, isRegisteredFile } from '@types'
+import { IItem, IRoom, LanguageType, isRegisteredFile } from '@types'
 
 import { getBaseURL } from '../../setupAxios'
 import { useTranslation } from 'react-i18next'
@@ -36,7 +36,7 @@ const generateShapeProps = (string: string): ShapeProps => ({
 
 export const Room: React.FC = () => {
   const { _id } = useParams()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const [room, setRoom] = useState<IRoom | undefined | null>()
   const [category, setCategory] = useState<SelectOptionProps[]>([])
@@ -77,10 +77,11 @@ export const Room: React.FC = () => {
       .then((response) => {
         const { success, data } = response
         if (success) {
-          const categoryList = data?.categories.map((category) => ({
-            id: category,
-            text: category,
-            value: category,
+          const language = i18n.language.split('-')[0] as LanguageType
+          const categoryList = data?.categories.map((categorie) => ({
+            id: categorie._id,
+            text: categorie[language],
+            value: categorie[language],
           }))
           setCategory(categoryList ? categoryList : [])
           setIsLoading(false)

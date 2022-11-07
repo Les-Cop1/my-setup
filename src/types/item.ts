@@ -11,9 +11,15 @@ export interface IItem {
   createDate?: number
   user?: string
   room?: string
-  categories?: Array<string>
+  categories?: Array<CategoryType>
   image?: RegisteredFile | undefined
   invoice?: RegisteredFile | undefined
+}
+
+export type CategoryType = {
+  _id: string
+  en: string
+  fr: string
 }
 
 export interface ICreateItem {
@@ -26,7 +32,7 @@ export interface ICreateItem {
   createDate?: number
   user?: string
   room?: string
-  categories?: Array<string>
+  categories?: Array<CategoryType>
   image?: File | undefined
   invoice?: File | undefined
 }

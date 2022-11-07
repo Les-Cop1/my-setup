@@ -51,7 +51,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
       description,
       image,
       invoice,
-      categories: [],
+      categories: categories.map((category: SelectOptionProps) => category.id),
       room: room?._id,
     }).then((result) => {
       const { success, error } = result
@@ -165,7 +165,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
               value={categories}
               options={category}
               onChange={(value) => {
-                setCategories([...categories, value])
+                setCategories(value)
               }}
               placeholder={t('Please select a category')}
             />

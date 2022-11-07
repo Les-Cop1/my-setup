@@ -1,9 +1,9 @@
-import { ResponseType } from '@types'
+import { CategoryType, ResponseType } from '@types'
 
 import axios from 'axios'
 
 type CategoryResponseType = {
-  categories: string[]
+  categories: CategoryType[]
 }
 
 const getCategories = async (): Promise<ResponseType<CategoryResponseType>> => {

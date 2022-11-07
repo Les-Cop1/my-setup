@@ -4,7 +4,7 @@ import { deleteItem, updateItem } from '@api'
 import { Button, ButtonVariant, Input, Select, SelectOptionProps, SlideOver, Upload } from '@components'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { DocumentIcon } from '@heroicons/react/24/solid'
-import { IItem, RegisteredFile, isFile, isRegisteredFile } from '@types'
+import { IItem, LanguageType, RegisteredFile, isFile, isRegisteredFile } from '@types'
 
 import { getBaseURL } from '../../setupAxios'
 import { useTranslation } from 'react-i18next'
@@ -18,7 +18,7 @@ type EditItemProps = {
 }
 
 export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, item, category }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const [brand, setBrand] = useState<string>(item?.brand || '')
   const [model, setModel] = useState<string>(item?.model || '')
@@ -85,7 +85,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
     data.append('price', price?.toString() || '')
     data.append('purchaseDate', purchaseDate)
     data.append('link', link)
-    data.append('categories', JSON.stringify(categories))
+    data.append('categories', JSON.stringify(categories.map((category: SelectOptionProps) => category.id)))
     data.append('description', description)
     if (image && !isRegisteredFile(image)) {
       data.append('image', image)
@@ -116,11 +116,19 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
     if (item?.price) setPrice(item?.price)
     if (item?.purchaseDate) setPurchaseDate(item?.purchaseDate.split('T')[0])
     if (item?.link) setLink(item?.link)
-    if (item?.categories) setCategories(item?.categories)
+    if (item?.categories) {
+      const language = i18n.language.split('-')[0] as LanguageType
+      const categoryList = item.categories.map((categorie) => ({
+        id: categorie._id,
+        text: categorie[language],
+        value: categorie[language],
+      }))
+      setCategories(categoryList)
+    }
     if (item?.description) setDescription(item?.description)
     if (item?.image) setImage(item?.image)
     if (item?.invoice) setInvoice(item?.invoice)
-  }, [item])
+  }, [item, i18n])
 
   return (
     <SlideOver isOpen={isOpen} onClose={handleClose} title={t('Edit item')}>
@@ -222,7 +230,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
                 value={categories}
                 options={category}
                 onChange={(value) => {
-                  setCategories([...categories, value])
+                  setCategories(value)
                 }}
                 placeholder={t('Please select a category')}
               />
