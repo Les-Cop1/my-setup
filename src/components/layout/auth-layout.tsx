@@ -1,13 +1,12 @@
 import React, { Fragment, useEffect, useState } from 'react'
 
 import { getRooms as getRoomsAPI } from '@api'
-import { Footer, SidebarItem } from '@components'
+import { AddRoom, Footer, SidebarItem } from '@components'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { classNames } from '@helpers'
 import { Bars3BottomLeftIcon, HomeIcon } from '@heroicons/react/20/solid'
 import { PlusCircleIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Squares2X2Icon } from '@heroicons/react/24/solid'
-import { AddRoom } from '@pages'
 import { IRoom } from '@types'
 
 import { useTranslation } from 'react-i18next'
