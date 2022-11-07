@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button Snapshot 1`] = `
+<div>
+  <button
+    class="group relative whitespace-nowrap justify-center items-center px-4 py-2 border font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm disabled:bg-zinc-300 disabled:text-zinc-500 disabled:cursor-not-allowed bg-white text-slate-700 border-slate-300 hover:bg-slate-50 focus:ring-zinc-50 text-base"
+    testid="testId"
+    type="button"
+  />
+</div>
+`;
