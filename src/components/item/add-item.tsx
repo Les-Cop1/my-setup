@@ -3,9 +3,8 @@ import React, { useState } from 'react'
 import { createItem } from '@api'
 import { Button, ButtonVariant, Input, Select, SelectOptionProps, SlideOver, Upload } from '@components'
 import { TrashIcon } from '@heroicons/react/24/outline'
-import { IRoom, isRegisteredFile } from '@types'
+import { IRoom, isFile, isRegisteredFile } from '@types'
 
-import { getBaseURL } from '../../setupAxios'
 import { useTranslation } from 'react-i18next'
 
 type AddItemProps = {
@@ -19,7 +18,6 @@ type AddItemProps = {
 export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, category, room }) => {
   const { t } = useTranslation()
 
-  // const [preview, setPreview] = React.useState<string>('')
   const [brand, setBrand] = useState<string>('')
   const [model, setModel] = useState<string>('')
   const [price, setPrice] = useState<number>(0)
@@ -67,6 +65,10 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
     })
   }
 
+  const handleDeleteImage = () => {
+    if (isFile(image)) setImage(undefined)
+  }
+
   return (
     <SlideOver isOpen={isOpen} onClose={onClose} title={t('Add item')}>
       <div className="flex flex-col h-full justify-between">
@@ -74,7 +76,22 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
           <div className="pb-5">
             <div className="flex items-center">
               <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-100 relative">
-                {image && <img src={URL.createObjectURL(image.name === '' ? new Blob() : image)} alt={t('Item')} />}
+                {image && (
+                  <img
+                    className="aspect-square object-cover"
+                    src={URL.createObjectURL(image.name === '' ? new Blob() : image)}
+                    alt={t('Item')}
+                  />
+                )}
+                {isFile(image) && (
+                  <div
+                    className="opacity-0 hover:opacity-100 ease-in-out duration-300 cursor-pointer bg-red-700/30 h-12 w-12 overflow-hidden rounded-full absolute top-0 left-0 flex justify-center items-center"
+                    onClick={handleDeleteImage}
+                  >
+                    <span className="sr-only">{t('Delete image')}</span>
+                    <TrashIcon className="h-6 w-6 text-white" />
+                  </div>
+                )}
               </span>
               <Upload
                 type="button"

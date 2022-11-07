@@ -23,3 +23,7 @@ export type RegisteredFile = {
 export const isRegisteredFile = (file: any): file is RegisteredFile => {
   return file && file._id && file.name && file._id !== '' && file.name !== ''
 }
+export const isFile = (file: any): file is File => {
+  if (file) return file && file.name !== '' && file.size !== 0 && file.type !== ''
+  else return false
+}

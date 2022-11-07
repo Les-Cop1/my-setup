@@ -4,7 +4,7 @@ import { deleteItem, updateItem } from '@api'
 import { Button, ButtonVariant, Input, Select, SelectOptionProps, SlideOver, Upload } from '@components'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { DocumentIcon } from '@heroicons/react/24/solid'
-import { IItem, RegisteredFile, isRegisteredFile } from '@types'
+import { IItem, RegisteredFile, isFile, isRegisteredFile } from '@types'
 
 import { getBaseURL } from '../../setupAxios'
 import { useTranslation } from 'react-i18next'
@@ -71,6 +71,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
 
   const handleDeleteImage = () => {
     if (isRegisteredFile(image)) setImage({ ...image, _id: '', name: '' })
+    if (isFile(image)) setImage(undefined)
   }
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -131,6 +132,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
                 <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-100 relative">
                   {image && (
                     <img
+                      className="aspect-square object-cover"
                       src={
                         isRegisteredFile(image)
                           ? `${getBaseURL()}/file/${image._id}`
@@ -139,7 +141,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
                       alt={isRegisteredFile(image) ? t('Item') : ''}
                     />
                   )}
-                  {isRegisteredFile(image) && (
+                  {(isRegisteredFile(image) || isFile(image)) && (
                     <div
                       className="opacity-0 hover:opacity-100 ease-in-out duration-300 cursor-pointer bg-red-700/30 h-12 w-12 overflow-hidden rounded-full absolute top-0 left-0 flex justify-center items-center"
                       onClick={handleDeleteImage}

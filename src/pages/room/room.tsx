@@ -190,7 +190,11 @@ export const Room: React.FC = () => {
             header={
               <CardAddon>
                 {isRegisteredFile(item.image) ? (
-                  <img src={`${getBaseURL()}/file/${item.image._id}`} alt={item.image.name} />
+                  <img
+                    className="aspect-square object-cover rounded-lg"
+                    src={`${getBaseURL()}/file/${item.image._id}`}
+                    alt={item.image.name}
+                  />
                 ) : (
                   <SvgBlob
                     shapeProps={itemsAspect[index]}
