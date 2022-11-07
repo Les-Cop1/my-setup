@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Alert } from '@components'
+import { Alert, Input } from '@components'
 import { useAuth } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
@@ -40,40 +40,24 @@ export const Login = () => {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={onSubmit}>
-            <div>
-              <label htmlFor="username" className="block text-sm font-medium text-slate-700">
-                {t('Username')}
-              </label>
-              <div className="mt-1">
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  className="block w-full appearance-none rounded-md border border-slate-300 px-3 py-2 placeholder-slate-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-teal-500 sm:text-sm"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-slate-700">
-                {t('Password')}
-              </label>
-              <div className="mt-1">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="block w-full appearance-none rounded-md border border-slate-300 px-3 py-2 placeholder-slate-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-teal-500 sm:text-sm"
-                />
-              </div>
-            </div>
-
+            <Input
+              label={t('Username')}
+              name="username"
+              type="text"
+              autoComplete="username"
+              value={username}
+              onChange={(value) => setUsername(value as string)}
+              required
+            />
+            <Input
+              label={t('Password')}
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(value) => setPassword(value as string)}
+              required
+            />
             <div>
               <button
                 type="submit"
