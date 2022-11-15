@@ -35,6 +35,18 @@ describe('Alert', () => {
     expect(screen.getByText('hello world')).toBeInTheDocument()
   })
 
+  test('Alert should be close', () => {
+    render(<Alert testid="testId" message="message" isOpen={false} />)
+    expect(screen.queryByTestId('testId')).not.toBeInTheDocument()
+  })
+
+  test('Alert should be open', () => {
+    render(<Alert testid="default" message="message" />)
+    render(<Alert testid="open" message="message" isOpen={true} />)
+    expect(screen.getByTestId('default')).toBeInTheDocument()
+    expect(screen.getByTestId('open')).toBeInTheDocument()
+  })
+
   test('Snapshot', () => {
     const { container } = render(<Alert testid="testId" message="message" />)
     expect(container).toMatchSnapshot()

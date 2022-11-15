@@ -42,6 +42,7 @@ export const Register = () => {
             <Input
               label={t('Username')}
               name="username"
+              id="username"
               type="text"
               autoComplete="username"
               value={username}
@@ -51,6 +52,7 @@ export const Register = () => {
             <Input
               label={t('Password')}
               name="password"
+              id="password"
               type="password"
               autoComplete="new-password"
               value={password}
@@ -60,6 +62,7 @@ export const Register = () => {
             <Input
               label={t('Confirmation')}
               name="confirmation"
+              id="confirmation"
               type="password"
               autoComplete="new-password"
               value={confirmation}

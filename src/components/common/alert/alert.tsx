@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { classNames } from '@helpers'
 import { CheckCircleIcon, ExclamationCircleIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/react/20/solid'
