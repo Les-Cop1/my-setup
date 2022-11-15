@@ -84,7 +84,7 @@ export const Account = () => {
             </div>
             {error && (
               <div>
-                <Alert message={t(error)} />
+                <Alert message={t(error)} isOpen={true} setIsOpen={() => setError(null)} />
               </div>
             )}
           </form>

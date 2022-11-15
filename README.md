@@ -37,3 +37,5 @@ and
 ```bash
 yarn tailwind:start
 ```
+
+You probably need to run a backend server as well. You can find the backend [here](https://github.com/Les-Cop1/my-setup-back).

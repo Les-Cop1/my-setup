@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { classNames } from '@helpers'
 import { CheckCircleIcon, ExclamationCircleIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/react/20/solid'
@@ -11,6 +11,8 @@ export const Alert: React.FC<AlertProps> = ({
   type = 'error',
   isDismissible = true,
   className = '',
+  isOpen = true,
+  setIsOpen,
   ...props
 }) => {
   let Icon: IconType
@@ -43,6 +45,8 @@ export const Alert: React.FC<AlertProps> = ({
       break
   }
 
+  if (!isOpen) return null
+
   return (
     <div className={classNames('rounded-md p-4', bgColor, className)} {...props}>
       <div className="flex">
@@ -64,6 +68,7 @@ export const Alert: React.FC<AlertProps> = ({
                   hoverBgColor,
                   focusRingColor,
                 )}
+                onClick={setIsOpen}
               >
                 <span className="sr-only">Dismiss</span>
                 <XMarkIcon className="h-5 w-5" aria-hidden="true" />
