@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account Snapshot 1`] = `
+<div>
+  <div
+    class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8"
+  >
+    <div
+      class="sm:mx-auto sm:w-full sm:max-w-md"
+    >
+      <div
+        class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10"
+      >
+        <form
+          class="space-y-6"
+        >
+          <div>
+            <label
+              class="block text-sm font-medium text-slate-700"
+              for="username"
+            >
+              Username
+            </label>
+            <div
+              class="relative mt-1 rounded-md shadow-sm"
+            >
+              <input
+                class="block w-full rounded-md shadow-sm placeholder-slate-400 sm:text-sm border-slate-300 focus:border-teal-500 focus:ring-teal-500"
+                id="username"
+                name="username"
+                required=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              class="block text-sm font-medium text-slate-700"
+              for="actualPassword"
+            >
+              Actual password
+            </label>
+            <div
+              class="relative mt-1 rounded-md shadow-sm"
+            >
+              <input
+                class="block w-full rounded-md shadow-sm placeholder-slate-400 sm:text-sm border-slate-300 focus:border-teal-500 focus:ring-teal-500"
+                id="actualPassword"
+                name="actualPassword"
+                type="password"
+                value=""
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              class="block text-sm font-medium text-slate-700"
+              for="password"
+            >
+              Password
+            </label>
+            <div
+              class="relative mt-1 rounded-md shadow-sm"
+            >
+              <input
+                class="block w-full rounded-md shadow-sm placeholder-slate-400 sm:text-sm border-slate-300 focus:border-teal-500 focus:ring-teal-500"
+                id="password"
+                name="password"
+                type="password"
+                value=""
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              class="block text-sm font-medium text-slate-700"
+              for="confirmation"
+            >
+              Confirmation
+            </label>
+            <div
+              class="relative mt-1 rounded-md shadow-sm"
+            >
+              <input
+                class="block w-full rounded-md shadow-sm placeholder-slate-400 sm:text-sm border-slate-300 focus:border-teal-500 focus:ring-teal-500"
+                id="confirmation"
+                name="confirmation"
+                type="password"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="text-right"
+          >
+            <button
+              class="text-right group relative whitespace-nowrap justify-center items-center px-4 py-2 border font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm disabled:bg-zinc-300 disabled:text-zinc-500 disabled:cursor-not-allowed bg-cyan-500 text-white hover:bg-cyan-600 focus:ring-cyan-400 border-transparent text-base"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
