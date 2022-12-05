@@ -1,6 +1,6 @@
 # My Setup
 
----
+## ![test-cov](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/FelixLgr/1b205bd35a43654ab22e16068845ffd5/raw/my-setup-badge.json)
 
 ## Contributing
 
