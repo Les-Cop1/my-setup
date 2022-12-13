@@ -75,14 +75,12 @@ exports[`Login Snapshot 1`] = `
               />
             </div>
           </div>
-          <div>
-            <button
-              class="flex w-full justify-center rounded-md border border-transparent bg-teal-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
-              type="submit"
-            >
-              Sign in
-            </button>
-          </div>
+          <button
+            class="w-full group relative whitespace-nowrap justify-center items-center px-4 py-2 border font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm disabled:bg-zinc-300 disabled:text-zinc-500 disabled:cursor-not-allowed bg-teal-600 text-white hover:bg-teal-700 focus:ring-teal-500 border-transparent text-base"
+            type="submit"
+          >
+            Sign in
+          </button>
         </form>
         <div
           class="mt-6"

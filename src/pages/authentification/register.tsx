@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Alert, Input } from '@components'
+import { Alert, Button, ButtonVariant, Input } from '@components'
 import { useAuth } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
@@ -69,14 +69,9 @@ export const Register = () => {
               onChange={(value) => setConfirmation(value as string)}
               required
             />
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md border border-transparent bg-teal-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
-              >
-                {t('Sign up')}
-              </button>
-            </div>
+            <Button type="submit" className="w-full" variant={ButtonVariant.PRIMARY}>
+              {t('Sign up')}
+            </Button>
             {error && (
               <div>
                 <Alert message={t(error)} isOpen={true} setIsOpen={() => setError(null)} />
