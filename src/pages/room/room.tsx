@@ -224,7 +224,7 @@ export const Room: React.FC = () => {
                     type="button"
                     title={t('Open invoice')}
                     onClick={(_) => {
-                      window.open(`${getBaseURL()}/file/${item.invoice}`, '_blank')
+                      window.open(`${getBaseURL()}/file/${item.invoice?._id}`, '_blank')
                     }}
                     className="relative -ml-px inline-flex w-full items-center rounded-r-md bg-white px-2 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
                   >
