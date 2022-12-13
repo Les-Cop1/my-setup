@@ -33,6 +33,7 @@ jobs:
         run: yarn test:cov | tee ./coverage.txt
       - name: PR Comment
         uses: MishaKav/jest-coverage-comment@main
+        id: coverageComment
         with:
           coverage-summary-path: ./coverage/coverage-summary.json
           title: Code Coverage
@@ -40,3 +41,13 @@ jobs:
           badge-title: Coverage
           coverage-title: Coverage Report
           coverage-path: ./coverage.txt
+      - name: Create the badge
+        if: github.ref == 'refs/heads/main'
+        uses: schneegans/dynamic-badges-action@v1.6.0
+        with:
+          auth: ${{ secrets.JEST_COVERAGE_COMMENT }}
+          gistID: 1b205bd35a43654ab22e16068845ffd5
+          filename: my-setup-badge.json
+          label: Coverage
+          message: ${{ steps.coverageComment.outputs.coverage }}%
+          color: ${{ steps.coverageComment.outputs.color }}

@@ -44,6 +44,7 @@ export const Login = () => {
               label={t('Username')}
               name="username"
               type="text"
+              id="username"
               autoComplete="username"
               value={username}
               onChange={(value) => setUsername(value as string)}
@@ -53,6 +54,7 @@ export const Login = () => {
               label={t('Password')}
               name="password"
               type="password"
+              id="password"
               autoComplete="current-password"
               value={password}
               onChange={(value) => setPassword(value as string)}
@@ -68,7 +70,7 @@ export const Login = () => {
             </div>
             {error && (
               <div>
-                <Alert message={t(error)} />
+                <Alert message={t(error)} isOpen={true} setIsOpen={() => setError(null)} />
               </div>
             )}
           </form>

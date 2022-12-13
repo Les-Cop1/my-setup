@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Snapshot 1`] = `
+<div>
+  <div
+    class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8"
+  >
+    <div
+      class="sm:mx-auto sm:w-full sm:max-w-md"
+    >
+      <div
+        class="flex justify-center flex-shrink-0 text-6xl mx-auto h-12 w-auto"
+      >
+        <span
+          class="sr-only"
+        >
+          mySetup
+        </span>
+        🏠
+      </div>
+      <h2
+        class="mt-6 text-center text-3xl font-bold tracking-tight text-slate-900"
+      >
+        Sign in to your account
+      </h2>
+    </div>
+    <div
+      class="mt-8 sm:mx-auto sm:w-full sm:max-w-md"
+    >
+      <div
+        class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10"
+      >
+        <form
+          class="space-y-6"
+        >
+          <div>
+            <label
+              class="block text-sm font-medium text-slate-700"
+              for="username"
+            >
+              Username
+            </label>
+            <div
+              class="relative mt-1 rounded-md shadow-sm"
+            >
+              <input
+                autocomplete="username"
+                class="block w-full rounded-md shadow-sm placeholder-slate-400 sm:text-sm border-slate-300 focus:border-teal-500 focus:ring-teal-500"
+                id="username"
+                name="username"
+                required=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              class="block text-sm font-medium text-slate-700"
+              for="password"
+            >
+              Password
+            </label>
+            <div
+              class="relative mt-1 rounded-md shadow-sm"
+            >
+              <input
+                autocomplete="current-password"
+                class="block w-full rounded-md shadow-sm placeholder-slate-400 sm:text-sm border-slate-300 focus:border-teal-500 focus:ring-teal-500"
+                id="password"
+                name="password"
+                required=""
+                type="password"
+                value=""
+              />
+            </div>
+          </div>
+          <div>
+            <button
+              class="flex w-full justify-center rounded-md border border-transparent bg-teal-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+              type="submit"
+            >
+              Sign in
+            </button>
+          </div>
+        </form>
+        <div
+          class="mt-6"
+        >
+          <div
+            class="relative"
+          >
+            <div
+              class="absolute inset-0 flex items-center"
+            >
+              <div
+                class="w-full border-t border-slate-300"
+              />
+            </div>
+            <div
+              class="relative flex justify-center text-sm"
+            >
+              <span
+                class="bg-white px-2 text-slate-500"
+              >
+                <a
+                  class="font-medium text-teal-600 hover:text-teal-500"
+                  href="/register"
+                >
+                  or sign up
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

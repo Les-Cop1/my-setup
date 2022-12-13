@@ -1,16 +1,14 @@
 import { ButtonProps } from '@components'
-import { IconType } from '@types'
+import { ComponentType, IconType } from '@types'
 
-export type PageHeaderProps = {
+export interface PageHeaderProps extends ComponentType {
   title: string
   actions?: ButtonProps[]
   meta?: PageHeaderMetaProps[]
   moreText?: string
   backgroundColor?: 'dark' | 'light' | 'white'
-  className?: string
 }
-
-export type PageHeaderMetaProps = {
+export interface PageHeaderMetaProps extends ComponentType {
   label: string
   icon?: IconType
   backgroundColor?: 'dark' | 'light' | 'white'

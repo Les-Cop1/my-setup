@@ -1,6 +1,6 @@
 # My Setup
 
----
+## ![test-cov](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/FelixLgr/1b205bd35a43654ab22e16068845ffd5/raw/my-setup-badge.json)
 
 ## Contributing
 
@@ -37,3 +37,5 @@ and
 ```bash
 yarn tailwind:start
 ```
+
+You probably need to run a backend server as well. You can find the backend [here](https://github.com/Les-Cop1/my-setup-back).
