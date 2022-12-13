@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Snapshot 1`] = `
+<div>
+  <p
+    class="text-base text-left"
+    testid="testId"
+  />
+</div>
+`;

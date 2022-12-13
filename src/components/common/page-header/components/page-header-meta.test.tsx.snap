@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page Header Meta Snapshot 1`] = `
+<div>
+  <div
+    class="mt-2 flex items-center text-sm text-slate-500"
+  >
+    Hello
+  </div>
+</div>
+`;

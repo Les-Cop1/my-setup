@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { ComponentType } from '@types'
+
 export enum TextVariant {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
@@ -14,7 +16,7 @@ export enum TextVariant {
   WHITE = 'white',
 }
 
-export type TextProps = {
+export interface TextProps extends ComponentType {
   isLoading?: boolean
   skeleton?: string
   isHeadline?: boolean
@@ -27,5 +29,4 @@ export type TextProps = {
   children?: React.ReactNode
   text?: string
   textAlignment?: 'left' | 'center' | 'right' | 'justify'
-  className?: string
 }

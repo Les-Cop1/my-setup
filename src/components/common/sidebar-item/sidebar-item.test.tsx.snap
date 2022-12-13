@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar item Snapshot 1`] = `
+<div>
+  <a
+    class="text-sm text-slate-300 hover:bg-slate-700 hover:text-white group flex items-center px-2 py-2 font-medium rounded-md"
+    href="/world"
+  >
+    Hello
+  </a>
+</div>
+`;

@@ -22,7 +22,7 @@ export const Text: React.FC<TextProps> = ({
   let styleClasses = ''
   let variantClasses = ''
   let alignClasses: string
-  let sizeClasses = ''
+  let sizeClasses: string
 
   if (isLoading) styleClasses = classNames('w-fit animate-pulse bg-slate-700 rounded-full text-transparent')
 
