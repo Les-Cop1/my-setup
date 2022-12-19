@@ -6,7 +6,7 @@ import { TrashIcon } from '@heroicons/react/24/outline'
 import { DocumentIcon } from '@heroicons/react/24/solid'
 import { IItem, LanguageType, RegisteredFile, isFile, isRegisteredFile } from '@types'
 
-import { getBaseURL } from '../../setupAxios'
+import { getBaseURL, getFileURL } from '../../setupAxios'
 import { useTranslation } from 'react-i18next'
 
 type EditItemProps = {
@@ -261,7 +261,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
                       <Button
                         type="button"
                         onClick={(_) => {
-                          window.open(`${getBaseURL()}/file/${invoice._id}`, '_blank')
+                          window.open(`${getFileURL()}/${invoice._id}`, '_blank')
                         }}
                         icon={DocumentIcon}
                         className="mx-2"
