@@ -78,7 +78,7 @@ export const Account = () => {
               value={confirmation}
             />
             <div className="text-right">
-              <Button type="submit" className="text-right" variant={ButtonVariant.INFO}>
+              <Button type="submit" className="text-right" variant={ButtonVariant.PRIMARY}>
                 {t('Submit')}
               </Button>
             </div>
