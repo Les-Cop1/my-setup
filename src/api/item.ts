@@ -1,4 +1,4 @@
-import { ICreateItem, IItem, ResponseType } from '@types'
+import { IItem, ResponseType } from '@types'
 
 import axios from 'axios'
 
@@ -28,7 +28,7 @@ export const getItem = async (id: string): Promise<ResponseType<ItemResponseType
   }
 }
 
-export const createItem = async (item: ICreateItem): Promise<ResponseType> => {
+export const createItem = async (item: FormData): Promise<ResponseType> => {
   const response = await axios.post('/item', item)
   return response.data
 }

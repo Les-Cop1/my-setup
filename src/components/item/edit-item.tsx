@@ -104,8 +104,11 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
           getRooms()
           handleClose()
         } else {
-          console.error(error)
+          throw new Error(error)
         }
+      })
+      .catch((error) => {
+        setAlert(error.message)
       })
       .finally(() => {
         setIsLoading(false)
