@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
 import { Alert, Button, ButtonVariant, Input } from '@components'
-import { useAuth, useDocumentTitle } from '@hooks'
+import { useDocumentTitle } from '@helpers'
+import { useAuth } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'

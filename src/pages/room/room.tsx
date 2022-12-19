@@ -14,8 +14,8 @@ import {
   TextVariant,
 } from '@components'
 import { stringToFloat } from '@helpers'
+import { useDocumentTitle } from '@helpers'
 import { DocumentIcon, PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
-import { useDocumentTitle } from '@hooks'
 import { IItem, IRoom, LanguageType, isRegisteredFile } from '@types'
 
 import { getBaseURL, getFileURL } from '../../setupAxios'
@@ -51,7 +51,7 @@ export const Room: React.FC = () => {
 
   const [getRooms] = useOutletContext<Array<() => void>>()
 
-  useDocumentTitle(room?.name ? room.name : '')
+  useDocumentTitle(room?.name ?? '')
 
   const getRoomData = () => {
     setIsLoading(true)

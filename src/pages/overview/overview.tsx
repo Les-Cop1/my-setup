@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { getRoomStats } from '@api'
 import { Card, PageHeader } from '@components'
-import { useDocumentTitle } from '@hooks'
+import { useDocumentTitle } from '@helpers'
 
 import { ArcElement, BarElement, CategoryScale, Chart as ChartJS, LinearScale, Title, Tooltip } from 'chart.js'
 import { Bar, Doughnut } from 'react-chartjs-2'
