@@ -3,4 +3,5 @@ export type NavbarItemProps = {
   to: string
   isMobile?: boolean
   className?: string
+  onClick?: () => void
 }

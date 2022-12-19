@@ -89,18 +89,40 @@ export const AuthLayout: React.FC = () => {
                     </div>
                   </Transition.Child>
                   <div className="flex flex-shrink-0 items-center px-4">
-                    <Link to="/" className="text-3xl">
+                    <Link
+                      to="/"
+                      className="text-3xl"
+                      onClick={() => {
+                        setIsSidebarOpen(false)
+                      }}
+                    >
                       <span className="sr-only">My Setup</span>
                       🏠
                     </Link>
                   </div>
                   <div className="mt-5 h-0 flex-1 overflow-y-auto">
                     <nav className="space-y-1 px-2">
-                      <SidebarItem label={t('Overview')} to="/setup" icon={Squares2X2Icon} isMobile />
+                      <SidebarItem
+                        label={t('Overview')}
+                        to="/setup"
+                        icon={Squares2X2Icon}
+                        isMobile
+                        onClick={() => {
+                          setIsSidebarOpen(false)
+                        }}
+                      />
                       <SidebarItem label={t('Room', { count: rooms.length })} to="#" icon={HomeIcon} isMobile />
                       <div className="pl-5">
                         {rooms.map((item) => (
-                          <SidebarItem label={item.name} to={`room/${item._id}`} key={item._id} isMobile />
+                          <SidebarItem
+                            label={item.name}
+                            to={`room/${item._id}`}
+                            key={item._id}
+                            isMobile
+                            onClick={() => {
+                              setIsSidebarOpen(false)
+                            }}
+                          />
                         ))}
                         <SidebarItem
                           label={t('Add room')}
