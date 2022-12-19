@@ -217,7 +217,6 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
               />
             </div>
           </div>
-
           <div className="flex justify-end">
             <Button type="button" onClick={handleClose}>
               {t('Close')}

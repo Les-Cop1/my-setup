@@ -17,7 +17,7 @@ import { stringToFloat } from '@helpers'
 import { DocumentIcon, PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { IItem, IRoom, LanguageType, isRegisteredFile } from '@types'
 
-import { getBaseURL } from '../../setupAxios'
+import { getBaseURL, getFileURL } from '../../setupAxios'
 import { useTranslation } from 'react-i18next'
 import { useOutletContext, useParams } from 'react-router-dom'
 import { ShapeProps, SvgBlob } from 'react-svg-blob'
@@ -224,7 +224,7 @@ export const Room: React.FC = () => {
                     type="button"
                     title={t('Open invoice')}
                     onClick={(_) => {
-                      window.open(`${getBaseURL()}/file/${item.invoice?._id}`, '_blank')
+                      window.open(`${getFileURL()}/${item.invoice?._id}`, '_blank')
                     }}
                     className="relative -ml-px inline-flex w-full items-center rounded-r-md bg-white px-2 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
                   >
