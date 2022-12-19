@@ -84,7 +84,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
 
   return (
     <SlideOver isOpen={isOpen} onClose={onClose} title={t('Add item')}>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="h-full">
         <div className="flex flex-col h-full justify-between">
           <div>
             {alert !== '' && <Alert className="mb-5" message={alert} isDismissible={false} />}
