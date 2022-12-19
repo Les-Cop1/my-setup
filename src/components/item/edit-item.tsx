@@ -293,7 +293,6 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
                   }}
                   onFileSelectError={(e) => {
                     setAlert(e)
-                    console.log(document.getElementById('alert'))
                     document.getElementById('headlessui-dialog-title-:r7:')?.scrollIntoView({
                       behavior: 'smooth',
                     })
