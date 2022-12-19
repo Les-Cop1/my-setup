@@ -24,7 +24,7 @@ export const AuthLayout: React.FC = () => {
     getRoomsAPI().then((result) => {
       const { success, error, data } = result
       if (success && data) {
-        setRooms(data.rooms)
+        setRooms(data.rooms.sort((a, b) => a.name.localeCompare(b.name)))
       } else {
         console.error(error)
       }
