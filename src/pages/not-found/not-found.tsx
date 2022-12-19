@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 export const NotFound: React.FC = () => {
   const { t } = useTranslation()
+  document.title = `${t('Error')} - mySetup`
 
   return (
     <div className="w-full flex flex-col items-center justify-center p-10 gap-6">

@@ -5,9 +5,8 @@ import illustration from '@assets/images/presentation.svg'
 import { useTranslation } from 'react-i18next'
 
 export const Home: React.FC = () => {
-  document.title = 'mySetup'
-
   const { t } = useTranslation()
+  document.title = 'mySetup'
 
   return (
     <div className="max-w-7xl mx-auto flex flex-col content-center lg:flex-row justify-between p-5 gap-6 my-auto">

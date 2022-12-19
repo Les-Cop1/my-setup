@@ -98,6 +98,7 @@ export const Room: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true)
+    document.title = `${room?.name} - mySetup`
     setItemsAspect([])
     const items = room?.items ? room.items : []
     const count = items.length
