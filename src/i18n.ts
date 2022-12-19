@@ -13,6 +13,7 @@ i18n
     resources: { fr, en },
     fallbackLng: 'en',
     debug: process.env.NODE_ENV === 'development',
+    returnNull: false,
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
