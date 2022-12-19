@@ -39,11 +39,16 @@ export const Navbar: React.FC = () => {
               <div className="flex lg:hidden">
                 {/* Mobile menu button */}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                    <>
+                      <span className="sr-only">Close main menu</span>
+                      <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                    </>
                   ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                    <>
+                      <span className="sr-only">Open main menu</span>
+                      <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                    </>
                   )}
                 </Disclosure.Button>
               </div>
@@ -104,20 +109,24 @@ export const Navbar: React.FC = () => {
           </div>
 
           <Disclosure.Panel className="lg:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
-              {user ? (
-                <NavbarItem to="/setup" label="mySetup" isMobile />
-              ) : (
-                <NavbarItem to="/login" label={`${t('Sign in')} / ${t('Sign up')}`} isMobile />
-              )}
-            </div>
-            {user && (
-              <div className="border-t border-slate-700 pt-4 pb-3">
-                <div className="mt-3 space-y-1 px-2">
-                  <NavbarItem to="/user" label={t('My account')} isMobile />
-                  <NavbarItem to="/logout" label={t('Logout')} isMobile />
+            {({ close }) => (
+              <>
+                <div className="space-y-1 px-2 pt-2 pb-3">
+                  {user ? (
+                    <NavbarItem to="/setup" label="mySetup" isMobile onClick={close} />
+                  ) : (
+                    <NavbarItem to="/login" label={`${t('Sign in')} / ${t('Sign up')}`} isMobile onClick={close} />
+                  )}
                 </div>
-              </div>
+                {user && (
+                  <div className="border-t border-slate-700 pt-4 pb-3">
+                    <div className="mt-3 space-y-1 px-2">
+                      <NavbarItem to="/user" label={t('My account')} isMobile onClick={close} />
+                      <NavbarItem to="/logout" label={t('Logout')} isMobile onClick={close} />
+                    </div>
+                  </div>
+                )}
+              </>
             )}
           </Disclosure.Panel>
         </>
