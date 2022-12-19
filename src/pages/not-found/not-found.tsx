@@ -1,13 +1,12 @@
 import React from 'react'
 
 import illustration from '@assets/images/not_found.svg'
-import { useDocumentTitle } from '@helpers'
 
 import { useTranslation } from 'react-i18next'
 
 export const NotFound: React.FC = () => {
   const { t } = useTranslation()
-  useDocumentTitle(t('Error'))
+  document.title = `${t('Error')} - mySetup`
 
   return (
     <div className="w-full flex flex-col items-center justify-center p-10 gap-6">

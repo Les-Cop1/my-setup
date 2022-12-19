@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import { Alert, Button, ButtonVariant, Input } from '@components'
-import { useDocumentTitle } from '@helpers'
 import { useAuth } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
@@ -9,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 export const Register = () => {
   const { t } = useTranslation()
-  useDocumentTitle(t('Sign up'))
+  document.title = `${t('Sign up')} - mySetup`
 
   const { register } = useAuth()
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 
 import { getRoomStats } from '@api'
 import { Card, PageHeader } from '@components'
-import { useDocumentTitle } from '@helpers'
 
 import { ArcElement, BarElement, CategoryScale, Chart as ChartJS, LinearScale, Title, Tooltip } from 'chart.js'
 import { Bar, Doughnut } from 'react-chartjs-2'
@@ -32,7 +31,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, ArcElem
 
 export const Overview: React.FC = () => {
   const { t } = useTranslation()
-  useDocumentTitle(t('Overview'))
+  document.title = `${t('Overview')} - mySetup`
 
   const [statsGlobal, setStatsGlobal] = useState<StatsGlobal>()
   const [statsRooms, setStatsRooms] = useState<StatsRooms[]>([])

@@ -14,7 +14,6 @@ import {
   TextVariant,
 } from '@components'
 import { stringToFloat } from '@helpers'
-import { useDocumentTitle } from '@helpers'
 import { DocumentIcon, PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { IItem, IRoom, LanguageType, isRegisteredFile } from '@types'
 
@@ -50,8 +49,6 @@ export const Room: React.FC = () => {
   const [itemsAspect, setItemsAspect] = useState<ShapeProps[]>([])
 
   const [getRooms] = useOutletContext<Array<() => void>>()
-
-  useDocumentTitle(room?.name ?? '')
 
   const getRoomData = () => {
     setIsLoading(true)
@@ -101,6 +98,7 @@ export const Room: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true)
+    document.title = `${room?.name} - mySetup`
     setItemsAspect([])
     const items = room?.items ? room.items : []
     const count = items.length
