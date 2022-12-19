@@ -219,7 +219,7 @@ export const AuthLayout: React.FC = () => {
               <Outlet context={[getRooms]} />
             </div>
           </div>
-          <Footer content={`© ${new Date().getFullYear()} - My Setup`} backgroundColor="white" />
+          <Footer content={`© ${new Date().getFullYear()} - mySetup`} backgroundColor="white" />
         </div>
       </div>
     </div>

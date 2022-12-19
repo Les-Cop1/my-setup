@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 
 import { updateUser } from '@api'
 import { Alert, Button, ButtonVariant, Input } from '@components'
-import { useAuth } from '@hooks'
+import { useAuth, useDocumentTitle } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
 
 export const Account = () => {
   const { t } = useTranslation()
-  document.title = `${t('My account')} - mySetup`
+  useDocumentTitle(t('My account'))
 
   const { user } = useAuth()
 

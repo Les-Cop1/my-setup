@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
 import { Alert, Button, ButtonVariant, Input } from '@components'
-import { useAuth } from '@hooks'
+import { useAuth, useDocumentTitle } from '@hooks'
 
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 export const Login = () => {
   const { t } = useTranslation()
-  document.title = `${t('Sign in')} - mySetup`
+  useDocumentTitle(t('Sign in'))
 
   const { login } = useAuth()
 

@@ -5,8 +5,6 @@ import illustration from '@assets/images/presentation.svg'
 import { useTranslation } from 'react-i18next'
 
 export const Home: React.FC = () => {
-  document.title = 'mySetup'
-
   const { t } = useTranslation()
 
   return (
