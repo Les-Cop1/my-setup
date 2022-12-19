@@ -137,7 +137,7 @@ export const EditItem: React.FC<EditItemProps> = ({ isOpen, onClose, getRooms, i
 
   return (
     <SlideOver isOpen={isOpen} onClose={handleClose} title={t('Edit item')}>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="h-full">
         <div className="flex flex-col h-full justify-between">
           <div>
             {alert !== '' && <Alert className="mb-5" message={alert} isDismissible={false} />}
