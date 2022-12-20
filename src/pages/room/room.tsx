@@ -2,25 +2,26 @@ import React, { useEffect, useState } from 'react'
 
 import { getCategories, getRoom } from '@api'
 import illustration from '@assets/images/empty.svg'
-import {
-  AddItem,
-  Card,
-  CardAddon,
-  EditItem,
-  EditRoom,
-  PageHeader,
-  SelectOptionProps,
-  Text,
-  TextVariant,
-} from '@components'
-import { stringToFloat } from '@helpers'
-import { DocumentIcon, PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
-import { IItem, IRoom, LanguageType, isRegisteredFile } from '@types'
+import { AddItem, Card, EditItem, EditRoom, PageHeader, SelectOptionProps, Text, TextVariant } from '@components'
+import { ChevronUpDownIcon, PencilIcon, PlusIcon } from '@heroicons/react/24/outline'
+import { IItem, IRoom, LanguageType } from '@types'
 
-import { getBaseURL, getFileURL } from '../../setupAxios'
+import { ItemCard } from './components'
+import { useCookies } from 'react-cookie'
 import { useTranslation } from 'react-i18next'
 import { useOutletContext, useParams } from 'react-router-dom'
-import { ShapeProps, SvgBlob } from 'react-svg-blob'
+
+const sortByPriceThenName = (a: IItem, b: IItem) => {
+  if (a.price === b.price) {
+    return `${a.brand} ${a.model}`.localeCompare(`${b.brand} ${b.model}`)
+  }
+
+  return (b.price ?? 0) - (a.price ?? 0)
+}
+
+const sortByName = (a: IItem, b: IItem) => {
+  return `${a.brand} ${a.model}`.localeCompare(`${b.brand} ${b.model}`)
+}
 
 type stats = {
   count?: number
@@ -28,25 +29,22 @@ type stats = {
   average?: number
 }
 
-const generateShapeProps = (string: string): ShapeProps => ({
-  size: 200,
-  growth: stringToFloat(string),
-  edges: Math.floor(stringToFloat(string)) + 3,
-})
-
 export const Room: React.FC = () => {
   const { _id } = useParams()
   const { t, i18n } = useTranslation()
+  const [cookies, setCookies] = useCookies(['isSortByPrice'])
 
   const [room, setRoom] = useState<IRoom | undefined | null>()
+  const [items, setItems] = useState<IItem[]>([])
   const [category, setCategory] = useState<SelectOptionProps[]>([])
+
   const [itemToEdit, setItemToEdit] = useState<IItem | undefined>()
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [stats, setStats] = useState<stats>({})
   const [isSidebarOpenRoom, setIsSidebarOpenRoom] = useState<boolean>(false)
   const [isSidebarOpenAddItem, setIsSidebarOpenAddItem] = useState<boolean>(false)
   const [isSidebarOpenEditItem, setIsSidebarOpenEditItem] = useState<boolean>(false)
-  const [itemsAspect, setItemsAspect] = useState<ShapeProps[]>([])
+  const [isSortingByPrice, setIsSortingByPrice] = useState<boolean>(cookies.isSortByPrice === 'true' ?? true)
 
   const [getRooms] = useOutletContext<Array<() => void>>()
 
@@ -96,36 +94,6 @@ export const Room: React.FC = () => {
       })
   }
 
-  useEffect(() => {
-    setIsLoading(true)
-    document.title = `${room?.name} - mySetup`
-    setItemsAspect([])
-    const items = room?.items ? room.items : []
-    const count = items.length
-
-    const total = items.reduce((acc, { price }) => {
-      return acc + (typeof price === 'number' ? price : 0)
-    }, 0)
-    const average = count !== 0 ? total / items.length : 0
-
-    setStats({
-      count,
-      total: Math.round(total * 100) / 100,
-      average: Math.round(average * 100) / 100,
-    })
-
-    items.forEach((item) => {
-      setItemsAspect((prev) => [...prev, generateShapeProps(item.brand)])
-    })
-
-    setIsLoading(false)
-  }, [room])
-
-  useEffect(() => {
-    getRoomData()
-    getCategory()
-  }, [_id, getRooms])
-
   const handleEditItem = (item: IItem) => {
     setItemToEdit(item)
     setIsSidebarOpenEditItem(true)
@@ -134,6 +102,48 @@ export const Room: React.FC = () => {
   const handleAddItem = () => {
     setIsSidebarOpenAddItem(true)
   }
+
+  useEffect(() => {
+    setIsLoading(true)
+
+    if (room?.name) {
+      document.title = `${room.name} - mySetup`
+    }
+
+    const newItems = room?.items ? [...room.items] : []
+    newItems.sort(isSortingByPrice ? sortByPriceThenName : sortByName)
+    setItems(newItems)
+
+    const count = newItems.length
+
+    const total = newItems.reduce((acc, { price }) => {
+      return acc + (typeof price === 'number' ? price : 0)
+    }, 0)
+    const average = count !== 0 ? total / newItems.length : 0
+
+    setStats({
+      count,
+      total: Math.round(total * 100) / 100,
+      average: Math.round(average * 100) / 100,
+    })
+
+    setIsLoading(false)
+  }, [room, isSortingByPrice])
+
+  useEffect(() => {
+    getRoomData()
+    getCategory()
+  }, [_id, getRooms])
+
+  useEffect(() => {
+    setCookies('isSortByPrice', isSortingByPrice, { path: '', maxAge: 31536000 })
+  }, [isSortingByPrice])
+
+  useEffect(() => {
+    if (cookies.isSortByPrice !== undefined) {
+      setIsSortingByPrice(cookies.isSortByPrice === 'true')
+    }
+  }, [cookies])
 
   if (isLoading) {
     return (
@@ -163,6 +173,11 @@ export const Room: React.FC = () => {
         actions={[
           { label: t('Add item'), icon: PlusIcon, isDisabled: isLoading, onClick: handleAddItem },
           { label: t('Edit room'), icon: PencilIcon, isDisabled: isLoading, onClick: () => setIsSidebarOpenRoom(true) },
+          {
+            label: t(isSortingByPrice ? 'Sort by name' : 'Sort by price'),
+            icon: ChevronUpDownIcon,
+            onClick: () => setIsSortingByPrice(!isSortingByPrice),
+          },
         ]}
       />
 
@@ -186,69 +201,8 @@ export const Room: React.FC = () => {
       </div>
 
       <div className="mx-auto p-4 grid gap-3 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {room?.items?.map((item, index) => (
-          <Card
-            key={item._id}
-            header={
-              <CardAddon isFullWidth={true}>
-                {isRegisteredFile(item.image) ? (
-                  <img
-                    className="aspect-square object-cover"
-                    src={`${getBaseURL()}/file/${item.image._id}`}
-                    alt={item.image.name}
-                  />
-                ) : (
-                  <SvgBlob
-                    shapeProps={itemsAspect[index]}
-                    variant="gradient"
-                    colors={['#2dd4bf', '#0d9488']}
-                    className="p-8"
-                  />
-                )}
-              </CardAddon>
-            }
-            footer={
-              <span className="isolate w-full inline-flex rounded-md shadow-sm divide-x">
-                <button
-                  type="button"
-                  title={t('Edit item')}
-                  className="relative inline-flex w-full items-center rounded-l-md bg-white px-2 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
-                  onClick={(_) => {
-                    handleEditItem(item)
-                  }}
-                >
-                  <span className="sr-only">{t('Edit item')}</span>
-                  <PencilIcon className="h-5 w-5" aria-hidden="true" />
-                </button>
-                {item?.invoice && (
-                  <button
-                    type="button"
-                    title={t('Open invoice')}
-                    onClick={(_) => {
-                      window.open(`${getFileURL()}/${item.invoice?._id}`, '_blank')
-                    }}
-                    className="relative -ml-px inline-flex w-full items-center rounded-r-md bg-white px-2 py-3 text-sm font-medium text-gray-500 hover:bg-gray-50 justify-center"
-                  >
-                    <span className="sr-only">{t('Open invoice')}</span>
-                    <DocumentIcon className="h-5 w-5" aria-hidden="true" />
-                  </button>
-                )}
-              </span>
-            }
-          >
-            <div className="h-full">
-              <Text isLoading={isLoading} skeleton="xxxxxxx" as="h4">
-                {item.brand} <Text isLoading={isLoading} skeleton="xxxxxxx" text={item.model} as="span" />
-              </Text>
-              {item.price && (
-                <Text
-                  isLoading={isLoading}
-                  skeleton="xxxxxxx"
-                  text={t('Money', { val: item.price, minimumFractionDigits: 2 })}
-                />
-              )}
-            </div>
-          </Card>
+        {items?.map((item) => (
+          <ItemCard key={item._id} item={item} handleEditItem={handleEditItem} isLoading={isLoading} />
         ))}
       </div>
 

@@ -6,6 +6,7 @@ import App from './app'
 import './i18n'
 import reportWebVitals from './reportWebVitals'
 import setupAxios from './setupAxios'
+import { CookiesProvider } from 'react-cookie'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -15,7 +16,9 @@ setupAxios()
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <CookiesProvider>
+        <App />
+      </CookiesProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )
