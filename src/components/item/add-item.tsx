@@ -21,7 +21,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
   const [brand, setBrand] = useState<string>('')
   const [model, setModel] = useState<string>('')
   const [price, setPrice] = useState<number>(0)
-  const [purchaseDate, setPurchaseDate] = useState<Date | undefined>(undefined)
+  const [purchaseDate, setPurchaseDate] = useState<string | undefined>(undefined)
   const [link, setLink] = useState<string>('')
   const [categories, setCategories] = useState<any>([])
   const [description, setDescription] = useState<string>('')
@@ -161,7 +161,7 @@ export const AddItem: React.FC<AddItemProps> = ({ isOpen, onClose, getRooms, cat
                 type="date"
                 value={purchaseDate?.toString()}
                 onChange={(value) => {
-                  setPurchaseDate(new Date(value))
+                  setPurchaseDate(value as string)
                 }}
               />
             </div>
