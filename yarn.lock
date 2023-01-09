@@ -1285,10 +1285,10 @@
   dependencies:
     find-up "^5.0.0"
 
-"@commitlint/types@^17.0.0":
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-17.0.0.tgz#3b4604c1a0f06c340ce976e6c6903d4f56e3e690"
-  integrity sha512-hBAw6U+SkAT5h47zDMeOu3HSiD0SODw4Aq7rRNh1ceUmL7GyLKYhPbUvlRWqZ65XjBLPHZhFyQlRaPNz8qvUyQ==
+"@commitlint/types@^17", "@commitlint/types@^17.0.0":
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-17.4.0.tgz#c7c2b97b959f6175c164632bf26208ce417b3f31"
+  integrity sha512-2NjAnq5IcxY9kXtUeO2Ac0aPpvkuOmwbH/BxIm36XXK5LtWFObWJWjXOA+kcaABMrthjWu6la+FUpyYFMHRvbA==
   dependencies:
     chalk "^4.1.0"
 
@@ -3999,13 +3999,14 @@ commander@^9.4.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-9.4.1.tgz#d1dd8f2ce6faf93147295c0df13c7c21141cfbdd"
   integrity sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==
 
-commitlint-plugin-gitmoji@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/commitlint-plugin-gitmoji/-/commitlint-plugin-gitmoji-2.2.0.tgz#e8fd35f1fd9f5790d7382d2d00bc90452ff24e56"
-  integrity sha512-njFLibrctUTeYjJYqiG9EOnCUcX/OvHCf96bArYBIbH7IEV6fylslVTt6pQcCvaMfOPUBj3f+a3g1eYchggZVw==
+commitlint-plugin-gitmoji@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/commitlint-plugin-gitmoji/-/commitlint-plugin-gitmoji-2.2.3.tgz#06e573a00e09277835491028dde2e0400e9e64d7"
+  integrity sha512-uF3RVeKD+kRc6OWx3sIdXUeBvSuSWYiitalOw2zSLSbxabEgUV7M7FpqrSfYOgv3DdWhjy6ErMDgwKanZ7x9Lw==
   dependencies:
-    dotenv "^8.2.0"
+    "@commitlint/types" "^17"
     emoji-name-map "^1.2.9"
+    gitmojis "^3.11.1"
 
 commitlint@^17.1.2:
   version "17.3.0"
@@ -4788,11 +4789,6 @@ dotenv@^16.0.3:
   version "16.0.3"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
   integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
-
-dotenv@^8.2.0:
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.6.0.tgz#061af664d19f7f4d8fc6e4ff9b584ce237adcb8b"
-  integrity sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==
 
 duplexer@^0.1.2:
   version "0.1.2"
@@ -5780,6 +5776,11 @@ git-sha1@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/git-sha1/-/git-sha1-0.1.2.tgz#599ac192b71875825e13a445f3a6e05118c2f745"
   integrity sha512-2e/nZezdVlyCopOCYHeW0onkbZg7xP1Ad6pndPy1rCygeRykefUS6r7oA5cJRGEFvseiaz5a/qUHFVX1dd6Isg==
+
+gitmojis@^3.11.1:
+  version "3.13.2"
+  resolved "https://registry.yarnpkg.com/gitmojis/-/gitmojis-3.13.2.tgz#fe3fc24d14e2050edd9e0eb5e4ae5319ff2eb8a5"
+  integrity sha512-LqtmY8cectRus+1/hoXotA/ln0Fgjxwn/SUSzvZdYtkArvzrTEfACIU6bWC1Jw/wezYHIIzZdJbJhePKcYKzpw==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
